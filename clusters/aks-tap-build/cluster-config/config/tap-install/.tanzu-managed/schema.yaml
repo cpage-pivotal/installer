@@ -1,0 +1,11 @@
+#@data/values-schema
+#@overlay/match-child-defaults missing_ok=True
+---
+tap_install:
+  version:
+    package_repo_bundle_tag: ""
+    package_version: ""
+  package_repository:
+    oci_repository: ""
+  #@schema/type any=True
+  values: {}

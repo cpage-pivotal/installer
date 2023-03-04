@@ -1,0 +1,3 @@
+tap_install:
+  package_repository:
+    oci_repository: registry.tanzu.vmware.com/tanzu-application-platform/tap-packages
