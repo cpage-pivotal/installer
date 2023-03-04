@@ -1,0 +1,106 @@
+---
+tap_install:
+  values:
+    profile: full
+    excluded_packages:
+      - learningcenter.tanzu.vmware.com
+      - workshops.learningcenter.tanzu.vmware.com
+    ceip_policy_disclosed: true # Installation fails if this is set to 'false'
+
+    shared:
+      ingress_domain: tap.corby.page
+      ingress_issuer: ""
+
+    buildservice:
+      kp_default_repository: "gcr.io/fe-cpage/build"
+      kp_default_repository_secret:
+        namespace: tap-install
+        name: build-registry
+      tanzunet_secret:
+        namespace: tap-install
+        name: tap-registry
+      enable_automatic_dependency_updates: false
+      descriptor_name: lite
+
+    accelerator:
+      ingress:
+        include: true
+        enable_tls: true
+      tls:
+        namespace: contour-tls
+        secret_name: tls
+      domain: tap.corby.page
+      samples:
+        include: true
+
+    appliveview:
+      ingressEnabled: true
+      tls:
+        namespace: contour-tls
+        secretName: tls
+
+    supply_chain: testing_scanning
+
+    ootb_supply_chain_testing_scanning:
+      registry:
+        server: "gcr.io/fe-cpage"
+        repository: "tap/supply-chain"
+      gitops:
+        ssh_secret: git-ssh
+        username: cpage-pivotal
+        branch: main
+        commit_message: "Update from TAP Supply Chain Choreographer"
+        email: pcorby@vmware.com
+        repository_prefix: ssh://git@github.com/cpage-pivotal/
+
+    contour:
+      envoy:
+        service:
+          type: LoadBalancer
+
+    cnrs:
+      default_tls_secret: contour-tls/tls
+      domain_template: "{{.Name}}-{{.Namespace}}.{{.Domain}}"
+
+    tap_gui:
+      service_type: ClusterIP
+      ingressEnabled: "true"
+      tls:
+        namespace: contour-tls
+        secretName: tls
+      app_config:
+        app:
+          baseUrl: https://tap-gui.tap.corby.page
+        catalog:
+          locations:
+            - type: url
+              target: https://github.com/cpage-pivotal/spring-sensors/blob/main/catalog/catalog-info.yaml
+            - type: url
+              target: https://github.com/cpage-pivotal/tanzu-java-web-app/blob/main/catalog-info.yaml
+        backend:
+          baseUrl: https://tap-gui.tap.corby.page
+          cors:
+            origin: https://tap-gui.tap.corby.page
+        proxy:
+          /metadata-store:
+            target: https://metadata-store-app.metadata-store:8443/api/v1
+            changeOrigin: true
+            secure: false
+            headers:
+              # Get token with: kubectl get secrets metadata-store-read-write-client -n metadata-store -o jsonpath="{.data.token}" | base64 -d
+              Authorization: "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjhDRzBfTjJCLVVRTnFLazJURmtrY3pZMVRoV1VqLTBYM3dreGJHdnhDbncifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJtZXRhZGF0YS1zdG9yZSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJtZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJtZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjYwNmJmZTk0LTMzNTQtNGZlYy1hNTdmLTJhMGI5MDBmZGE1OCIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDptZXRhZGF0YS1zdG9yZTptZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCJ9.OTJmUUhVaVHmmNYOQwTvDzKtAOBkNPQKDpmtT5aLXbI6FxOj1dsgfPo2_hTUlXjX2OYK37mZtt5KaITJVwC69FCsmK581uEAGpCRfKiuNCQG9OCRWoVeemUBEkRAt3oXf6PHwtRQc528aNoCH7sA1LAJuCWAeY0FsH0qtP8BjWT6CODM4rNB7JNrS-bqGWSVjTEYAqqNO_Gmie9Cw70Pndi82VgGjL7i6b3o-Q6R5kZuh_n6u2ELCiYih729g0bi7eMMK201TBNj7WDSVRwwmAhKWHSsbEsGSBB44WpBSepJnkTmaYRyUS1H43gRdJq8os_bSIKJKwBB1OvCNQxWcA"
+              X-Custom-Source: project-star
+        kubernetes:
+          serviceLocatorMethod:
+            type: 'multiTenant'
+    metadata_store:
+      app_service_type: ClusterIP # (optional) Defaults to LoadBalancer. Change to NodePort for distributions that don't support LoadBalancer
+      ns_for_export_app_cert: "*"
+
+    scanning:
+      metadataStore:
+        url: "" # Disable embedded integration since it's deprecated
+
+    grype:
+      namespace: "default" # (optional) Defaults to default namespace.
+      targetImagePullSecret: "registry-credentials"
