@@ -13,7 +13,6 @@ tap_install:
 
     buildservice:
       kp_default_repository: "gcr.io/fe-cpage/build"
-      descriptor_name: lite
 
     accelerator:
       ingress:
