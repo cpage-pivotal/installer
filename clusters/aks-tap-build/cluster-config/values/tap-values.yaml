@@ -13,13 +13,6 @@ tap_install:
 
     buildservice:
       kp_default_repository: "gcr.io/fe-cpage/build"
-      kp_default_repository_secret:
-        namespace: tap-install
-        name: build-registry
-      tanzunet_secret:
-        namespace: tap-install
-        name: tap-registry
-      enable_automatic_dependency_updates: false
       descriptor_name: lite
 
     accelerator:
