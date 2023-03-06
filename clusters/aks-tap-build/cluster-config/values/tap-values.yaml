@@ -56,12 +56,6 @@ tap_install:
         matchExpressions:
           - key: apps.tanzu.vmware.com/tap-workload-ns
             operator: Exists
-      additional_sources:
-        - git:
-            url: https://github.com/cpage-pivotal/namespace-provisioner.git
-            subPath: sysco-workload
-            ref: origin/main
-          path: _ytt_lib/sysco-workload
 
     contour:
       envoy:
