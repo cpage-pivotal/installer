@@ -13,6 +13,8 @@ tap_install:
     shared:
       ingress_domain: tap.corby.page
       ingress_issuer: ""
+      image_registry:
+        project_path: gcr.io/fe-cpage/tap
 
     buildservice:
       kp_default_repository: "gcr.io/fe-cpage/build"
@@ -47,6 +49,19 @@ tap_install:
         commit_message: "Update from TAP Supply Chain Choreographer"
         email: pcorby@vmware.com
         repository_prefix: ssh://git@github.com/cpage-pivotal/
+
+    namespace_provisioner:
+      controller: yes
+      namespace_selector:
+        matchExpressions:
+          - key: apps.tanzu.vmware.com/tap-workload-ns
+            operator: Exists
+      additional_sources:
+        - git:
+            url: https://github.com/cpage-pivotal/namespace-provisioner.git
+            subPath: sysco-workload
+            ref: origin/main
+          path: _ytt_lib/sysco-workload
 
     contour:
       envoy:
@@ -83,7 +98,7 @@ tap_install:
             secure: false
             headers:
               # Get token with: kubectl get secrets metadata-store-read-write-client -n metadata-store -o jsonpath="{.data.token}" | base64 -d
-              Authorization: "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjhDRzBfTjJCLVVRTnFLazJURmtrY3pZMVRoV1VqLTBYM3dreGJHdnhDbncifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJtZXRhZGF0YS1zdG9yZSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJtZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJtZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjYwNmJmZTk0LTMzNTQtNGZlYy1hNTdmLTJhMGI5MDBmZGE1OCIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDptZXRhZGF0YS1zdG9yZTptZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCJ9.OTJmUUhVaVHmmNYOQwTvDzKtAOBkNPQKDpmtT5aLXbI6FxOj1dsgfPo2_hTUlXjX2OYK37mZtt5KaITJVwC69FCsmK581uEAGpCRfKiuNCQG9OCRWoVeemUBEkRAt3oXf6PHwtRQc528aNoCH7sA1LAJuCWAeY0FsH0qtP8BjWT6CODM4rNB7JNrS-bqGWSVjTEYAqqNO_Gmie9Cw70Pndi82VgGjL7i6b3o-Q6R5kZuh_n6u2ELCiYih729g0bi7eMMK201TBNj7WDSVRwwmAhKWHSsbEsGSBB44WpBSepJnkTmaYRyUS1H43gRdJq8os_bSIKJKwBB1OvCNQxWcA"
+              Authorization: "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkFxVTlaSWFoeG1nM3FmQXVfSEloVi10LVRXNkhMN1hCQ1A4VEJxQUlOMzQifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJtZXRhZGF0YS1zdG9yZSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJtZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJtZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjVkMjRhZTYwLTk5NDUtNGQwOC1iZTdiLWY3ZjZjYWJkNmNhMCIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDptZXRhZGF0YS1zdG9yZTptZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCJ9.WqObnzan5qi91P1VfaBzkirYpIDp4YSMSWTX8JrrYsbw2-dXfUqefT6-jfOdDDqyZnP_FgSLUq7EnoBDp3xNVpFTSDfYrxdIUkXXHmDy1N_7FeuEImW_ySWNFjho1_41pO9oCcEm-Xf_8HDJlhEi1J5gRIEkdm0P_7m1xzt7wg59SGaILv_CvpfpYWIvUfH7WXqvPj4FNBAI7_654kEPSPRa05_VxyzHON0IzQbuZ-Cu72rCxRgLKNuppzeDVLSp08zphHBX-BEz5rT7MnNm9A815fYte5NSJ_fZWaBMXEwTbqa6sUfnhJoMUyU59RZqAR8iSbH3QWj6gdGIVegXGb5a8ksy9EigPEPGbLfMaYI6bD45GhPLNrfCTP-TyRrqtEFI35ctOFCOQlRL1C0BL56owvFRTWUTCNU-Tlzl9Zp84xWxQu2hv9NfCnYt-lisR6VQ_7FWAu7YB8BP0K7bJ85VGCKQzEZeyevJi1AbKQY75HRhreddU3JIaq5wWETgCEVtY-3AIlYp8sScEsDRUvGbZNFaEZ_oxteooJrMbMoFzGJOtGmkHDzMDt_4MK4RTFfk-dd74Uap7k9MQDuU_n_5xjdNc5pmHyQXqxZKXEV-ht8v9fwvnPdmTDJu8-CTIwYi61oeYaqtp3pxFWhQau_6ENogfwdRWM576rEZy_A"
               X-Custom-Source: project-star
         kubernetes:
           serviceLocatorMethod:
