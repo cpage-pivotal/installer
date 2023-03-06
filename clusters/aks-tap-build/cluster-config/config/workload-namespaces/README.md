@@ -1,4 +1,4 @@
-# Sysco Workload Repo
+# Workload Namespaces
 
 Workload namespaces to be provisioned to the build cluster
 
