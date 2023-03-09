@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   labels:
     apps.tanzu.vmware.com/tap-workload-ns: ""
-  name: workload-corby
+  name: workload-spring
