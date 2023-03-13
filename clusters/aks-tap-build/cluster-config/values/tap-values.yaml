@@ -51,8 +51,8 @@ tap_install:
       controller: false
       gitops_install:
         ref: origin/main
-        subPath: samples/gitops-install
-        url: https://github.com/atmandhol/tap-nsp-gitops.git
+        subPath: clusters/aks-tap-build/cluster-config/namespace-provisioner
+        url: https://github.com/cpage-pivotal/installer
 
     contour:
       envoy:
