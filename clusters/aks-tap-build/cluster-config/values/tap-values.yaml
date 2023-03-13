@@ -87,10 +87,6 @@ tap_install:
             target: https://metadata-store-app.metadata-store:8443/api/v1
             changeOrigin: true
             secure: false
-            headers:
-              # Get token with: kubectl get secrets metadata-store-read-write-client -n metadata-store -o jsonpath="{.data.token}" | base64 -d
-              Authorization: "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkFxVTlaSWFoeG1nM3FmQXVfSEloVi10LVRXNkhMN1hCQ1A4VEJxQUlOMzQifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJtZXRhZGF0YS1zdG9yZSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJtZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJtZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjVkMjRhZTYwLTk5NDUtNGQwOC1iZTdiLWY3ZjZjYWJkNmNhMCIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDptZXRhZGF0YS1zdG9yZTptZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCJ9.WqObnzan5qi91P1VfaBzkirYpIDp4YSMSWTX8JrrYsbw2-dXfUqefT6-jfOdDDqyZnP_FgSLUq7EnoBDp3xNVpFTSDfYrxdIUkXXHmDy1N_7FeuEImW_ySWNFjho1_41pO9oCcEm-Xf_8HDJlhEi1J5gRIEkdm0P_7m1xzt7wg59SGaILv_CvpfpYWIvUfH7WXqvPj4FNBAI7_654kEPSPRa05_VxyzHON0IzQbuZ-Cu72rCxRgLKNuppzeDVLSp08zphHBX-BEz5rT7MnNm9A815fYte5NSJ_fZWaBMXEwTbqa6sUfnhJoMUyU59RZqAR8iSbH3QWj6gdGIVegXGb5a8ksy9EigPEPGbLfMaYI6bD45GhPLNrfCTP-TyRrqtEFI35ctOFCOQlRL1C0BL56owvFRTWUTCNU-Tlzl9Zp84xWxQu2hv9NfCnYt-lisR6VQ_7FWAu7YB8BP0K7bJ85VGCKQzEZeyevJi1AbKQY75HRhreddU3JIaq5wWETgCEVtY-3AIlYp8sScEsDRUvGbZNFaEZ_oxteooJrMbMoFzGJOtGmkHDzMDt_4MK4RTFfk-dd74Uap7k9MQDuU_n_5xjdNc5pmHyQXqxZKXEV-ht8v9fwvnPdmTDJu8-CTIwYi61oeYaqtp3pxFWhQau_6ENogfwdRWM576rEZy_A"
-              X-Custom-Source: project-star
         kubernetes:
           serviceLocatorMethod:
             type: 'multiTenant'
