@@ -5,9 +5,6 @@ tap_install:
     excluded_packages:
       - learningcenter.tanzu.vmware.com
       - workshops.learningcenter.tanzu.vmware.com
-      - apiserver.appliveview.tanzu.vmware.com
-      - connector.appliveview.tanzu.vmware.com
-      - conventions.appliveview.tanzu.vmware.com
     ceip_policy_disclosed: true # Installation fails if this is set to 'false'
 
     shared:
