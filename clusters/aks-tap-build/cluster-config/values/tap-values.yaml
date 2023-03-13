@@ -49,15 +49,10 @@ tap_install:
 
     namespace_provisioner:
       controller: false
-      namespace_selector:
-        matchExpressions:
-          - key: apps.tanzu.vmware.com/tap-workload-ns
-            operator: Exists
       gitops_install:
         ref: origin/main
         subPath: samples/gitops-install
         url: https://github.com/atmandhol/tap-nsp-gitops.git
-
 
     contour:
       envoy:
