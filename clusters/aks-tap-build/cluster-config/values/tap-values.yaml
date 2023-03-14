@@ -59,6 +59,14 @@ tap_install:
             subPath: clusters/aks-tap-build/cluster-config/namespace-provisioner/namespace-resources
             url: https://github.com/cpage-pivotal/installer
           path: _ytt_lib/namespace-resources
+      import_data_values_secrets:
+        - name: workload-git-auth
+          namespace: tap-install
+          create_export: true
+      overlay_secrets:
+        - name: workload-git-auth-overlay
+          namespace: tap-install
+          create_export: true
 
     contour:
       envoy:
