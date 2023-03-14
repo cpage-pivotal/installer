@@ -1,0 +1,38 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: spring-sensors-tap-demos-w06-s722
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    apps.tanzu.vmware.com/scanning: "true"
+    app.kubernetes.io/part-of: spring-sensors
+spec:
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "17"
+  source:
+    git:
+      url: https://gitea.tap.corby.cc/gitea_admin/tap-demos-w06-s722-1678736422.git
+      ref:
+        branch: main
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      memory: 512Mi
+  serviceClaims:
+    - name: db
+      ref:
+        apiVersion: with.sql.tanzu.vmware.com/v1
+        kind: MySQL
+        name: sensors-mysql
+  params:
+    - name: annotations
+      value:
+        autoscaling.knative.dev/minScale: "1"
+    - name: gitops_repository
+      value: ssh://git@github.com/cpage-pivotal/tap-gitops
+    - name: gitops_branch
+      value: spring-sensors-tap-demos-w06-s722
