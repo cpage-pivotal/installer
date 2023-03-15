@@ -17,18 +17,6 @@ spec:
       url: https://gitea.tap.corby.cc/gitea_admin/tap-demos-w06-s732-1678809861.git
       ref:
         branch: main
-  resources:
-    requests:
-      cpu: 500m
-      memory: 512Mi
-    limits:
-      memory: 512Mi
-  serviceClaims:
-    - name: db
-      ref:
-        apiVersion: with.sql.tanzu.vmware.com/v1
-        kind: MySQL
-        name: sensors-mysql
   params:
     - name: annotations
       value:
