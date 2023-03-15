@@ -1,7 +1,7 @@
 apiVersion: carto.run/v1alpha1
 kind: Workload
 metadata:
-  name: spring-sensors-tap-demos-w06-s722
+  name: spring-sensors
   namespace: workload-corby
   labels:
     apps.tanzu.vmware.com/workload-type: web
