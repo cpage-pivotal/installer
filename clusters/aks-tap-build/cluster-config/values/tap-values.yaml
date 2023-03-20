@@ -15,6 +15,9 @@ tap_install:
 
     buildservice:
       kp_default_repository: "gcr.io/fe-cpage/build"
+      kp_default_repository_secret:
+        namespace: tap-install
+        name: registry-credentials
 
     accelerator:
       ingress:
