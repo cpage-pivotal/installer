@@ -1,0 +1,16 @@
+apiVersion: kappctrl.k14s.io/v1alpha1
+kind: App
+metadata:
+  name: dependent-resources
+  namespace: tanzu-sync
+  annotations:
+    kapp.k14s.io/change-rule.0: "upsert after upserting pkgi"
+spec:
+  fetch:
+    - git:
+        ref: origin/main
+        url: https://github.com/cpage-pivotal/installer
+        subpath: clusters/aks-tap-build/cluster-config/dependent-resources
+  serviceAccountName: default
+  template:
+    - ytt: {}
