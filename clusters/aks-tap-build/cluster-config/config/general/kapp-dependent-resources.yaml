@@ -12,7 +12,6 @@ spec:
         ref: origin/main
         url: https://github.com/cpage-pivotal/installer
         subPath: clusters/aks-tap-build/cluster-config/dependent-resources
-  serviceAccountName: default
   template:
     - ytt: {}
   deploy:
