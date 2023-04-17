@@ -125,6 +125,8 @@ metadata:
 spec:
   virtualhost:
     fqdn: spring-sensors-sso.tap.corby.page
+    tls:
+      secretName: contour-tls/tls
   routes:
     - conditions:
         - prefix: /
