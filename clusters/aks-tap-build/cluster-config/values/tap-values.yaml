@@ -115,3 +115,6 @@ tap_install:
     grype:
       namespace: "default" # (optional) Defaults to default namespace.
       targetImagePullSecret: "registry-credentials"
+
+    appsso:
+      domain_template: "{{.Name}}-{{.Namespace}}.{{.Domain}}"

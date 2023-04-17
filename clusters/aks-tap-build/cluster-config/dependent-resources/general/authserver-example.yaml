@@ -2,7 +2,7 @@
 apiVersion: sso.apps.tanzu.vmware.com/v1alpha1
 kind: AuthServer
 metadata:
-  name: my-authserver-example
+  name: authserver
   namespace: default
   labels:
     name: my-first-auth-server
@@ -72,11 +72,11 @@ metadata:
   namespace: default
 spec:
   virtualhost:
-    fqdn: authserver.tap.corby.page
+    fqdn: authserver-default.tap.corby.page
     tls:
       secretName: contour-tls/tls
   routes:
     - services:
-        - name: my-authserver-example-auth-server
+        - name: authserver-auth-server
           port: 80
 
