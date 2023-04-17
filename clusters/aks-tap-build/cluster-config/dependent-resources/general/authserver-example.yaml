@@ -41,3 +41,20 @@ spec:
     stringData:
       key.pem: $(privateKey)
       pub.pem: $(publicKey)
+---
+---
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: authserver
+  namespace: default
+spec:
+  virtualhost:
+    fqdn: authserver.tap.corby.page
+    tls:
+      secretName: contour-tls/tls
+  routes:
+    - services:
+        - name: my-authserver-example-auth-server
+          port: 80
+
