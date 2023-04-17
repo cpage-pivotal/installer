@@ -30,6 +30,18 @@ spec:
     signAndVerifyKeyRef:
       name: "authserver-signing-key"
 ---
+apiVersion: secretgen.k14s.io/v1alpha1
+kind: RSAKey
+metadata:
+  name: authserver-signing-key
+  namespace: contour-tls
+spec:
+  secretTemplate:
+    type: Opaque
+    stringData:
+      key.pem: $(privateKey)
+      pub.pem: $(publicKey)
+---
 apiVersion: sso.apps.tanzu.vmware.com/v1alpha1
 kind: ClientRegistration
 metadata:
@@ -53,18 +65,6 @@ spec:
     - name: "profile"
     - name: "roles"
     - name: "message.read"
----
-apiVersion: secretgen.k14s.io/v1alpha1
-kind: RSAKey
-metadata:
-  name: authserver-signing-key
-  namespace: contour-tls
-spec:
-  secretTemplate:
-    type: Opaque
-    stringData:
-      key.pem: $(privateKey)
-      pub.pem: $(publicKey)
 #---
 #apiVersion: projectcontour.io/v1
 #kind: HTTPProxy
