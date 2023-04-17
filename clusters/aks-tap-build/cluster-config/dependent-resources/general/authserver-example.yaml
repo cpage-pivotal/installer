@@ -3,7 +3,7 @@ apiVersion: sso.apps.tanzu.vmware.com/v1alpha1
 kind: AuthServer
 metadata:
   name: authserver
-  namespace: default
+  namespace: contour-tls
   labels:
     name: my-first-auth-server
     env: tutorial
@@ -14,7 +14,8 @@ metadata:
 spec:
   replicas: 1
   tls:
-    disabled: true
+    secretRef:
+      name: tls
   identityProviders:
     - name: "internal"
       internalUnsafe:
@@ -64,19 +65,19 @@ spec:
     stringData:
       key.pem: $(privateKey)
       pub.pem: $(publicKey)
----
-apiVersion: projectcontour.io/v1
-kind: HTTPProxy
-metadata:
-  name: authserver
-  namespace: default
-spec:
-  virtualhost:
-    fqdn: authserver-default.tap.corby.page
-    tls:
-      secretName: contour-tls/tls
-  routes:
-    - services:
-        - name: authserver-auth-server
-          port: 80
+#---
+#apiVersion: projectcontour.io/v1
+#kind: HTTPProxy
+#metadata:
+#  name: authserver
+#  namespace: default
+#spec:
+#  virtualhost:
+#    fqdn: authserver-default.tap.corby.page
+#    tls:
+#      secretName: contour-tls/tls
+#  routes:
+#    - services:
+#        - name: authserver-auth-server
+#          port: 80
 
