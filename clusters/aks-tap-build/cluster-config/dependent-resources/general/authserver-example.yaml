@@ -8,7 +8,7 @@ metadata:
     name: my-first-auth-server
     env: tutorial
   annotations:
-    sso.apps.tanzu.vmware.com/allow-client-namespaces: "default"
+    sso.apps.tanzu.vmware.com/allow-client-namespaces: "*"
     sso.apps.tanzu.vmware.com/allow-unsafe-issuer-uri: ""
     sso.apps.tanzu.vmware.com/allow-unsafe-identity-provider: ""
 spec:
@@ -28,7 +28,30 @@ spec:
   tokenSignature:
     signAndVerifyKeyRef:
       name: "authserver-signing-key"
-
+---
+apiVersion: sso.apps.tanzu.vmware.com/v1alpha1
+kind: ClientRegistration
+metadata:
+  name: my-client-registration
+  namespace: workload-corby
+spec:
+  authServerSelector:
+    matchLabels:
+      name: my-first-auth-server
+      env: tutorial
+  redirectURIs:
+    - "http://spring-sensors-sso.tap.corby.page/oauth2/callback"
+  requireUserConsent: false
+  clientAuthenticationMethod: client_secret_basic
+  authorizationGrantTypes:
+    - "client_credentials"
+    - "authorization_code"
+  scopes:
+    - name: "openid"
+    - name: "email"
+    - name: "profile"
+    - name: "roles"
+    - name: "message.read"
 ---
 apiVersion: secretgen.k14s.io/v1alpha1
 kind: RSAKey
@@ -41,7 +64,6 @@ spec:
     stringData:
       key.pem: $(privateKey)
       pub.pem: $(publicKey)
----
 ---
 apiVersion: projectcontour.io/v1
 kind: HTTPProxy
