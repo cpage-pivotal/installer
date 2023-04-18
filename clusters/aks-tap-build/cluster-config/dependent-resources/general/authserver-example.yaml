@@ -65,19 +65,4 @@ spec:
     - name: "profile"
     - name: "roles"
     - name: "message.read"
-#---
-#apiVersion: projectcontour.io/v1
-#kind: HTTPProxy
-#metadata:
-#  name: authserver
-#  namespace: default
-#spec:
-#  virtualhost:
-#    fqdn: authserver-default.tap.corby.page
-#    tls:
-#      secretName: contour-tls/tls
-#  routes:
-#    - services:
-#        - name: authserver-auth-server
-#          port: 80
 
