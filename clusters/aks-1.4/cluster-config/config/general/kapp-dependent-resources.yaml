@@ -11,7 +11,7 @@ spec:
     - git:
         ref: origin/main
         url: https://github.com/cpage-pivotal/installer
-        subPath: clusters/aks-tap-build/cluster-config/dependent-resources
+        subPath: clusters/aks-1.4/cluster-config/dependent-resources
   template:
     - ytt: {}
   deploy:
