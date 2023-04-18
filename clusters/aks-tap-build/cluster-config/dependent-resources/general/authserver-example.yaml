@@ -53,7 +53,7 @@ spec:
       name: my-first-auth-server
       env: tutorial
   redirectURIs:
-    - "http://spring-sensors-sso.tap.corby.page/oauth2/callback"
+    - "https://spring-sensors-sso.tap.corby.page/oauth2/callback"
   requireUserConsent: false
   clientAuthenticationMethod: client_secret_basic
   authorizationGrantTypes:
