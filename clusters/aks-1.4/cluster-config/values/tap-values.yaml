@@ -48,17 +48,21 @@ tap_install:
         repository_prefix: ssh://git@github.com/cpage-pivotal/
 
     namespace_provisioner:
-      controller: false
+      controller: yes
+      namespace_selector:
+        matchExpressions:
+          - key: apps.tanzu.vmware.com/tap-developer-ns
+            operator: Exists
+      additional_sources:
+        - git:
+            url: https://github.com/cpage-pivotal/installer
+            subPath: clusters/aks-1.4/cluster-config/namespace-provisioner/namespace-resources
+            ref: origin/main
+          path: _ytt_lib/namespace-resources
       gitops_install:
         ref: origin/main
         subPath: clusters/aks-1.4/cluster-config/namespace-provisioner/namespaces
         url: https://github.com/cpage-pivotal/installer
-      additional_sources:
-        - git:
-            ref: origin/main
-            subPath: clusters/aks-1.4/cluster-config/namespace-provisioner/namespace-resources
-            url: https://github.com/cpage-pivotal/installer
-          path: _ytt_lib/namespace-resources
       import_data_values_secrets:
         - name: workload-git-auth
           namespace: tap-install
