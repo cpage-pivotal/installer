@@ -51,7 +51,7 @@ tap_install:
       controller: yes
       namespace_selector:
         matchExpressions:
-          - key: apps.tanzu.vmware.com/tap-developer-ns
+          - key: apps.tanzu.vmware.com/tap-ns
             operator: Exists
       additional_sources:
         - git:
