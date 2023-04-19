@@ -1,10 +1,3 @@
-#@ load("@ytt:data", "data")
-#@ def in_list(key, list):
-#@  return hasattr(data.values.tap_values, key) and (data.values.tap_values[key] in list)
-#@ end
-#! This if condition ensures that this Java Tekton pipeline is only created if the supply chain is testing or testing_scanning, and the TAP profile used is full, iterate or build.
-#@ if/end in_list('supply_chain', ['testing', 'testing_scanning']) and in_list('profile', ['full', 'iterate', 'build']):
----
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
