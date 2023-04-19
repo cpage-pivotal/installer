@@ -48,7 +48,7 @@ tap_install:
         repository_prefix: ssh://git@github.com/cpage-pivotal/
 
     namespace_provisioner:
-      controller: yes
+      controller: false
       namespace_selector:
         matchExpressions:
           - key: apps.tanzu.vmware.com/tap-ns
