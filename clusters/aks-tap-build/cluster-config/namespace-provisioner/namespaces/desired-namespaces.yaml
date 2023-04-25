@@ -2,4 +2,4 @@
 ---
 namespaces:
   - name: workload-corby
-  - name: workload-two
+  - name: workload-openai

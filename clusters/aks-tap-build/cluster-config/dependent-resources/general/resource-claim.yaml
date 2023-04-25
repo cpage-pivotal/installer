@@ -1,0 +1,10 @@
+apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+kind: ResourceClaim
+metadata:
+  name: openai-claim
+  namespace: workload-openai
+spec:
+  ref:
+    apiVersion: v1
+    kind: Secret
+    name: openai-binding
