@@ -79,6 +79,7 @@ tap_install:
 
     tap_gui:
       service_type: ClusterIP
+      metadataStoreAutoconfiguration: true
       ingressEnabled: "true"
       tls:
         namespace: contour-tls
@@ -98,11 +99,6 @@ tap_install:
           baseUrl: https://tap-gui.tap.corby.page
           cors:
             origin: https://tap-gui.tap.corby.page
-#        proxy:
-#          /metadata-store:
-#            target: https://metadata-store-app.metadata-store:8443/api/v1
-#            changeOrigin: true
-#            secure: false
         kubernetes:
           serviceLocatorMethod:
             type: 'multiTenant'
