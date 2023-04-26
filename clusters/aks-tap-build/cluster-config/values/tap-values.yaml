@@ -98,11 +98,11 @@ tap_install:
           baseUrl: https://tap-gui.tap.corby.page
           cors:
             origin: https://tap-gui.tap.corby.page
-        proxy:
-          /metadata-store:
-            target: https://metadata-store-app.metadata-store:8443/api/v1
-            changeOrigin: true
-            secure: false
+#        proxy:
+#          /metadata-store:
+#            target: https://metadata-store-app.metadata-store:8443/api/v1
+#            changeOrigin: true
+#            secure: false
         kubernetes:
           serviceLocatorMethod:
             type: 'multiTenant'
