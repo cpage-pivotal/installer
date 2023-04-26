@@ -14,7 +14,7 @@ spec:
         value: "17"
   source:
     git:
-      url: https://github.com/cpage-pivotal/dallecool
+      url: ssh://git@github.com/cpage-pivotal/dallecool
       ref:
         branch: main
   params:
