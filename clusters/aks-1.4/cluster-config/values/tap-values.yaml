@@ -59,18 +59,18 @@ tap_install:
             subPath: clusters/aks-1.4/cluster-config/namespace-provisioner/namespace-resources
             ref: origin/main
           path: _ytt_lib/namespace-resources
-      gitops_install:
-        ref: origin/main
-        subPath: clusters/aks-1.4/cluster-config/namespace-provisioner/namespaces
-        url: https://github.com/cpage-pivotal/installer
-      import_data_values_secrets:
-        - name: workload-git-auth
-          namespace: tap-install
-          create_export: true
-      overlay_secrets:
-        - name: workload-git-auth-overlay
-          namespace: tap-install
-          create_export: true
+#      gitops_install:
+#        ref: origin/main
+#        subPath: clusters/aks-1.4/cluster-config/namespace-provisioner/namespaces
+#        url: https://github.com/cpage-pivotal/installer
+#      import_data_values_secrets:
+#        - name: workload-git-auth
+#          namespace: tap-install
+#          create_export: true
+#      overlay_secrets:
+#        - name: workload-git-auth-overlay
+#          namespace: tap-install
+#          create_export: true
 
     contour:
       envoy:
