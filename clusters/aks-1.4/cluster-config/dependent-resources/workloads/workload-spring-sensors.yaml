@@ -14,7 +14,7 @@ spec:
         value: "17"
   source:
     git:
-      url: https://gitea.tap.corby.cc/gitea_admin/tap-demos-w06-s732-1678809861.git
+      url: https://github.com/cpage-pivotal/spring-sensors
       ref:
         branch: main
   params:
@@ -22,6 +22,6 @@ spec:
       value:
         autoscaling.knative.dev/minScale: "1"
     - name: gitops_repository
-      value: ssh://git@github.com/cpage-pivotal/tap-gitops
+      value: https://github.com/cpage-pivotal/tap-gitops
     - name: gitops_branch
       value: spring-sensors-tap-demos-w06-s722
