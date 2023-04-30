@@ -1,0 +1,9 @@
+kind: Accelerator
+metadata:
+  name: openai
+  namespace: accelerator-system
+spec:
+  git:
+    url: https://github.com/cpage-pivotal/dallecool
+    ref:
+      branch: main
