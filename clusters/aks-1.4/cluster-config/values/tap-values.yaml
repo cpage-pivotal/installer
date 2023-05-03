@@ -44,7 +44,7 @@ tap_install:
         repository_owner: cpage-pivotal
         repository_name: tap-gitops
         branch: main
-        ssh_secret: git-ssh
+#        ssh_secret: git-ssh
 #        username: cpage-pivotal
         commit_message: "Update from TAP Supply Chain Choreographer"
         email: pcorby@vmware.com
