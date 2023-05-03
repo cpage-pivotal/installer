@@ -40,12 +40,14 @@ tap_install:
         server: "gcr.io/fe-cpage"
         repository: "tap/supply-chain"
       gitops:
-        ssh_secret: git-ssh
-        username: cpage-pivotal
+        server_address: https://github.com
+        repository_owner: cpage-pivotal
+        repository_name: tap-gitops
         branch: main
+        ssh_secret: git-ssh
+#        username: cpage-pivotal
         commit_message: "Update from TAP Supply Chain Choreographer"
         email: pcorby@vmware.com
-        repository_prefix: ssh://git@github.com/cpage-pivotal/
 
     namespace_provisioner:
       controller: true
