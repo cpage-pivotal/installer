@@ -1,0 +1,14 @@
+#@data/values-schema
+#@overlay/match-child-defaults missing_ok=True
+---
+secrets:
+  sops:
+    age_key: ""
+    registry:
+      hostname: ""
+      username: ""
+      password: ""
+    git:
+      ssh:
+        private_key: ""
+        known_hosts: ""
