@@ -5,13 +5,18 @@ tap_install:
     ceip_policy_disclosed: true # Installation fails if this is set to 'false'
 
     shared:
-      ingress_domain: tap.corby.page
+      ingress_domain: iterate.corby.page
       ingress_issuer: ""
       image_registry:
         project_path: gcr.io/fe-cpage/tap
 
     buildservice:
       kp_default_repository: "gcr.io/fe-cpage/build"
+
+    appliveview_connector:
+      backend:
+        ingressEnabled: true
+        host: appliveview.tap.corby.page
 
     supply_chain: basic
 
