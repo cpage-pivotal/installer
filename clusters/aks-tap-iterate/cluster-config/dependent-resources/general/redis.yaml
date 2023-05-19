@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-stsck
+  labels:
+    app: redis-stsck
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-stsck
+  template:
+    metadata:
+      name: redis-stsck
+      labels:
+        app: redis-stsck
+    spec:
+      containers:
+        - name: redis-stsck
+          image: redis/redis-stack:latest
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
