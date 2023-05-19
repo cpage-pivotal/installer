@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: redis-stsck
+  name: redis-stack
   namespace: iterate-corby
   labels:
-    app: redis-stsck
+    app: redis-stack
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: redis-stsck
+      app: redis-stack
   template:
     metadata:
-      name: redis-stsck
+      name: redis-stack
       labels:
-        app: redis-stsck
+        app: redis-stack
     spec:
       containers:
-        - name: redis-stsck
+        - name: redis-stack
           image: redis/redis-stack:latest
           imagePullPolicy: IfNotPresent
       restartPolicy: Always
