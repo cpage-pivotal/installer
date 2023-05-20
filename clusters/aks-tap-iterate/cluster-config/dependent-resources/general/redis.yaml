@@ -54,6 +54,7 @@ apiVersion: projectcontour.io/v1
 kind: HTTPProxy
 metadata:
   name: redis-ui
+  namespace: iterate-corby
 spec:
   virtualhost:
     fqdn: redis.iterate.corby.page
