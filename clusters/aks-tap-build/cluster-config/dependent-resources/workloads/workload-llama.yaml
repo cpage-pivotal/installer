@@ -1,0 +1,29 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: llama
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    apps.tanzu.vmware.com/scanning: "true"
+    app.kubernetes.io/part-of: openai
+spec:
+  source:
+    git:
+      url: https://github.com/cpage-pivotal/llama
+      ref:
+        branch: main
+  params:
+    - name: annotations
+      value:
+        autoscaling.knative.dev/minScale: "1"
+  serviceClaims:
+    - name: openai
+      ref:
+        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+        kind: ResourceClaim
+        name: openai-claim
+    - name: redis
+      ref:
+        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+        kind: ResourceClaim
+        name: redis-claim
