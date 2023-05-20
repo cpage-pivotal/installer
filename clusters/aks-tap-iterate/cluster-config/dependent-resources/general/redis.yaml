@@ -21,3 +21,48 @@ spec:
           image: redis/redis-stack:latest
           imagePullPolicy: IfNotPresent
       restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: iterate-corby
+spec:
+  ports:
+    - port: 6379
+      protocol: TCP
+      targetPort: 6379
+  selector:
+    app: redis-stack
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-ui
+  namespace: iterate-corby
+spec:
+  ports:
+    - port: 8001
+      protocol: TCP
+      targetPort: 8001
+  selector:
+    app: redis-stack
+  type: ClusterIP
+---
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: redis-ui
+spec:
+  virtualhost:
+    fqdn: redis.iterate.corby.page
+    tls:
+      secretName: contour-tls/tls
+  routes:
+    - conditions:
+        - prefix: /
+      services:
+        - name: redis-ui
+          port: 8001
+
