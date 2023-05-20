@@ -10,13 +10,17 @@ metadata:
 spec:
   source:
     git:
-      url: https://github.com/cpage-pivotal/llama
+      url: ssh://git@github.com/cpage-pivotal/llama
       ref:
         branch: main
   params:
     - name: annotations
       value:
         autoscaling.knative.dev/minScale: "1"
+    - name: gitops_repository
+      value: ssh://git@github.com/cpage-pivotal/tap-gitops
+    - name: gitops_branch
+      value: llama
   serviceClaims:
     - name: openai
       ref:
