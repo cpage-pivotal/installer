@@ -74,6 +74,8 @@ metadata:
   name: redis-binding
   namespace: iterate-corby
 stringData:
+  type: "redis"
+  provider: "sample"
   host: "redis"
   port: "6379"
 
