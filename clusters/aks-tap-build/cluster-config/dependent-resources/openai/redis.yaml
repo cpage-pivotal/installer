@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-stack
+  namespace: workload-openai
+  labels:
+    app: redis-stack
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-stack
+  template:
+    metadata:
+      name: redis-stack
+      labels:
+        app: redis-stack
+    spec:
+      containers:
+        - name: redis-stack
+          image: redis/redis-stack:latest
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: workload-openai
+spec:
+  ports:
+    - port: 6379
+      protocol: TCP
+      targetPort: 6379
+  selector:
+    app: redis-stack
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-ui
+  namespace: workload-openai
+spec:
+  ports:
+    - port: 8001
+      protocol: TCP
+      targetPort: 8001
+  selector:
+    app: redis-stack
+  type: ClusterIP
+---
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: redis-ui
+  namespace: workload-openai
+spec:
+  virtualhost:
+    fqdn: redis.tap.corby.page
+    tls:
+      secretName: contour-tls/tls
+  routes:
+    - conditions:
+        - prefix: /
+      services:
+        - name: redis-ui
+          port: 8001
+---
+apiVersion: v1
+kind: Secret
+type: servicebinding.io/redis
+metadata:
+  name: redis-binding
+  namespace: workload-openai
+stringData:
+  type: "redis"
+  provider: "sample"
+  host: "redis"
+  port: "6379"
+---
+apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+kind: ResourceClaim
+metadata:
+  name: redis-claim
+  namespace: workload-openai
+spec:
+  ref:
+    apiVersion: v1
+    kind: Secret
+    name: redis-binding
