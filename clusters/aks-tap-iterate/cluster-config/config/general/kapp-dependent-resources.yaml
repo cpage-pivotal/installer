@@ -13,6 +13,10 @@ spec:
         url: https://github.com/cpage-pivotal/installer
         subPath: clusters/aks-tap-iterate/cluster-config/dependent-resources
   template:
+    - sops:
+        age:
+          privateKeysSecretRef:
+            name: sync-age-identity
     - ytt: {}
   deploy:
     - kapp:
