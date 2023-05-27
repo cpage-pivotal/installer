@@ -40,12 +40,14 @@ tap_install:
         server: "gcr.io/fe-cpage"
         repository: "tap/supply-chain"
       gitops:
-        ssh_secret: git-ssh
+        ssh_secret: git-https
         username: cpage-pivotal
         branch: main
         commit_message: "Update from TAP Supply Chain Choreographer"
         email: pcorby@vmware.com
-        repository_prefix: ssh://git@github.com/cpage-pivotal/
+        server_address: https://github.com/
+        repository_owner: cpage-pivotal
+        repository_name: tap-gitops
 
     namespace_provisioner:
       controller: false
@@ -59,10 +61,6 @@ tap_install:
             subPath: clusters/aks-tap-build/cluster-config/namespace-provisioner/namespace-resources
             url: https://github.com/cpage-pivotal/installer
           path: _ytt_lib/namespace-resources
-      import_data_values_secrets:
-        - name: workload-git-auth
-          namespace: tap-install
-          create_export: true
       overlay_secrets:
         - name: workload-git-auth-overlay
           namespace: tap-install

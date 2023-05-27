@@ -21,7 +21,3 @@ spec:
     - name: annotations
       value:
         autoscaling.knative.dev/minScale: "1"
-    - name: gitops_repository
-      value: ssh://git@github.com/cpage-pivotal/tap-gitops
-    - name: gitops_branch
-      value: spring-sensors-tap-demos-w06-s722
