@@ -14,7 +14,7 @@ spec:
     name: gitops_user_email
   - default: Update from TAP Supply Chain Choreographer
     name: gitops_commit_message
-  - default: git-ssh
+  - default: git-https
     name: gitops_ssh_secret
   - default: ssh://git@github.com/cpage-pivotal/
     name: gitops_repository_prefix
