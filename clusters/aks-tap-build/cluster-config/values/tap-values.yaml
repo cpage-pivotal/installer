@@ -47,7 +47,7 @@ tap_install:
         email: pcorby@vmware.com
         server_address: https://github.com/
         repository_owner: cpage-pivotal
-        repository_name: tap-gitops
+        repository_name: tap-deliveries
 
     namespace_provisioner:
       controller: false
