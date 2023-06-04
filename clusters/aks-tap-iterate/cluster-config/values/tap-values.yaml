@@ -6,6 +6,7 @@ tap_install:
 
     excluded_packages:
       - eventing.tanzu.vmware.com
+      - local-source-proxy.apps.tanzu.vmware.com
 
     shared:
       ingress_domain: iterate.corby.page
