@@ -4,6 +4,9 @@ tap_install:
     profile: iterate
     ceip_policy_disclosed: true # Installation fails if this is set to 'false'
 
+    excluded_packages:
+      - eventing.tanzu.vmware.com
+
     shared:
       ingress_domain: iterate.corby.page
       ingress_issuer: ""
