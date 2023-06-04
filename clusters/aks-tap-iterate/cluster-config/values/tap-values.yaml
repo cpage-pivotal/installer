@@ -47,6 +47,13 @@ tap_install:
           namespace: tap-install
           create_export: true
 
+    local_source_proxy:
+      repository: gcr.io/fe-cpage/tap-source-proxy
+      push_secret:
+        name: lsp-push-credentials
+        namespace: tap-install
+        create_export: true
+
     contour:
       envoy:
         service:
