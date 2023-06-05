@@ -42,11 +42,11 @@ tap_install:
             subPath: clusters/aks-tap-iterate/cluster-config/namespace-provisioner/namespace-resources
             url: https://github.com/cpage-pivotal/installer
           path: _ytt_lib/namespace-resources
-#      default_parameters:
-#        supply_chain_service_account:
-#          secrets:
-#            - git-https
-#          imagePullSecrets: [] # optional
+      default_parameters:
+        supply_chain_service_account:
+          secrets:
+            - git-https
+          imagePullSecrets: [] # optional
 #      overlay_secrets:
 #        - name: workload-git-auth-overlay
 #          namespace: tap-install
