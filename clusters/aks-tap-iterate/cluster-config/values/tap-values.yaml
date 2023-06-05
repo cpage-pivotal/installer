@@ -47,10 +47,6 @@ tap_install:
           secrets:
             - git-https
           imagePullSecrets: [] # optional
-#      overlay_secrets:
-#        - name: workload-git-auth-overlay
-#          namespace: tap-install
-#          create_export: true
 
     local_source_proxy:
       repository: gcr.io/fe-cpage/tap-source-proxy
