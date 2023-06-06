@@ -88,6 +88,11 @@ tap_install:
       app_config:
         app:
           baseUrl: https://tap-gui.tap.corby.page
+        auth:
+          environment: development
+        integrations:
+          github:
+            - host: github.com
         catalog:
           locations:
             - type: url
