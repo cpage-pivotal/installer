@@ -89,6 +89,7 @@ tap_install:
         app:
           baseUrl: https://tap-gui.tap.corby.page
         auth:
+          allowGuestAccess: true
           environment: development
         integrations:
           github:
