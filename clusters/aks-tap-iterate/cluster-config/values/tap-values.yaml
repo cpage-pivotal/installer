@@ -4,9 +4,6 @@ tap_install:
     profile: iterate
     ceip_policy_disclosed: true # Installation fails if this is set to 'false'
 
-    excluded_packages:
-      - eventing.tanzu.vmware.com
-
     shared:
       kubernetes_version: "1.25.9"
       ingress_domain: iterate.corby.page
