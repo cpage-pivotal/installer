@@ -1,0 +1,8 @@
+app:
+  plugins:
+    - name: '@tpb/plugin-hello-world'
+      version: '^1.6.0-release-1.6.x.1'
+backend:
+  plugins:
+    - name: '@tpb/plugin-hello-world-backend'
+      version: '^1.6.0-release-1.6.x.1'
