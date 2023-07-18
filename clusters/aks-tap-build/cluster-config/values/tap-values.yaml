@@ -110,6 +110,11 @@ tap_install:
           serviceLocatorMethod:
             type: 'multiTenant'
 
+    package_overlays:
+      - name: tap-gui
+        secrets:
+          - name: tpb-app-image-overlay-secret
+
     metadata_store:
       app_service_type: ClusterIP # (optional) Defaults to LoadBalancer. Change to NodePort for distributions that don't support LoadBalancer
       ns_for_export_app_cert: "*"
