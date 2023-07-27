@@ -1,8 +1,0 @@
-#@data/values-schema
-#@overlay/match-child-defaults missing_ok=True
----
-tap_install:
-  #@schema/nullable
-  #@schema/validation not_null=True 
-  #@schema/type any=True
-  sensitive_values:
