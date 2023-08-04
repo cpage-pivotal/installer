@@ -1,21 +1,21 @@
-apiVersion: carto.run/v1alpha1
-kind: Workload
-metadata:
-  name: tdp-configurator
-  namespace: workload-corby
-  labels:
-    apps.tanzu.vmware.com/workload-type: web
-    apps.tanzu.vmware.com/scanning: "true"
-    app.kubernetes.io/part-of: tdp-configurator
-spec:
-  build:
-    env:
-      - name: BP_NODE_RUN_SCRIPTS
-        value: 'set-tpb-config,portal:pack'
-      - name: TPB_CONFIG
-        value: /tmp/tpb-config.yaml
-      - name: TPB_CONFIG_STRING
-        value: YXBwOgogIHBsdWdpbnM6CiAgICAtIG5hbWU6ICdAdHBiL3BsdWdpbi1oZWxsby13b3JsZCcKICAgICAgdmVyc2lvbjogJ14xLjYuMC1yZWxlYXNlLTEuNi54LjEnCmJhY2tlbmQ6CiAgcGx1Z2luczoKICAgIC0gbmFtZTogJ0B0cGIvcGx1Z2luLWhlbGxvLXdvcmxkLWJhY2tlbmQnCiAgICAgIHZlcnNpb246ICdeMS42LjAtcmVsZWFzZS0xLjYueC4xJw==
-  source:
-    image: registry.tanzu.vmware.com/tanzu-application-platform/tap-packages@sha256:0b03767e0526803c055d080a7d378df9adaeaa7cff0ff5af23a2debe668f20e3
-    subPath: builder
+#apiVersion: carto.run/v1alpha1
+#kind: Workload
+#metadata:
+#  name: tdp-configurator
+#  namespace: workload-corby
+#  labels:
+#    apps.tanzu.vmware.com/workload-type: web
+#    apps.tanzu.vmware.com/scanning: "true"
+#    app.kubernetes.io/part-of: tdp-configurator
+#spec:
+#  build:
+#    env:
+#      - name: BP_NODE_RUN_SCRIPTS
+#        value: 'set-tpb-config,portal:pack'
+#      - name: TPB_CONFIG
+#        value: /tmp/tpb-config.yaml
+#      - name: TPB_CONFIG_STRING
+#        value: YXBwOgogIHBsdWdpbnM6CiAgICAtIG5hbWU6ICdAdHBiL3BsdWdpbi1oZWxsby13b3JsZCcKICAgICAgdmVyc2lvbjogJ14xLjYuMC1yZWxlYXNlLTEuNi54LjEnCmJhY2tlbmQ6CiAgcGx1Z2luczoKICAgIC0gbmFtZTogJ0B0cGIvcGx1Z2luLWhlbGxvLXdvcmxkLWJhY2tlbmQnCiAgICAgIHZlcnNpb246ICdeMS42LjAtcmVsZWFzZS0xLjYueC4xJw==
+#  source:
+#    image: registry.tanzu.vmware.com/tanzu-application-platform/tap-packages@sha256:0b03767e0526803c055d080a7d378df9adaeaa7cff0ff5af23a2debe668f20e3
+#    subPath: builder
