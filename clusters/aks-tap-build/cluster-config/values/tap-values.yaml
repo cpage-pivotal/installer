@@ -102,6 +102,8 @@ tap_install:
               target: https://github.com/cpage-pivotal/tanzu-java-web-app/blob/main/catalog-info.yaml
             - type: url
               target: https://github.com/cpage-pivotal/dallecool/blob/main/catalog/catalog-info.yaml
+            - type: url
+              target: https://github.com/vmware-tanzu/application-accelerator-samples/where-for-dinner/blob/main/catalog/catalog-info.yaml
         backend:
           baseUrl: https://tap-gui.tap.corby.page
           cors:
