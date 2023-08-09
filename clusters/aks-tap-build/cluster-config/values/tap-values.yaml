@@ -102,8 +102,6 @@ tap_install:
               target: https://github.com/cpage-pivotal/tanzu-java-web-app/blob/main/catalog-info.yaml
             - type: url
               target: https://github.com/cpage-pivotal/dallecool/blob/main/catalog/catalog-info.yaml
-            - type: url
-              target: https://github.com/tanzu-end-to-end/acme-catalog/blob/main/catalog-info.yaml
         backend:
           baseUrl: https://tap-gui.tap.corby.page
           cors:
@@ -111,13 +109,6 @@ tap_install:
         kubernetes:
           serviceLocatorMethod:
             type: 'multiTenant'
-        techdocs:
-          builder: 'external'
-          publisher:
-            type: 'awsS3'
-            awsS3:
-              bucketName: e2e-tap-appref-techdocs
-              region: us-east-2
 
     metadata_store:
       app_service_type: ClusterIP # (optional) Defaults to LoadBalancer. Change to NodePort for distributions that don't support LoadBalancer
