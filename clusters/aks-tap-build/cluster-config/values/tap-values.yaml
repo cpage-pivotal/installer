@@ -10,7 +10,7 @@ tap_install:
 
     shared:
       kubernetes_version: "1.25.9"
-      ingress_domain: tap.corby.page
+      ingress_domain: tap.tanzu.corby.page
       ingress_issuer: ""
       image_registry:
         project_path: gcr.io/fe-cpage/tap
@@ -25,7 +25,7 @@ tap_install:
       tls:
         namespace: contour-tls
         secret_name: tls
-      domain: tap.corby.page
+      domain: tap.tanzu.corby.page
       samples:
         include: true
 
@@ -86,8 +86,6 @@ tap_install:
         namespace: contour-tls
         secretName: tls
       app_config:
-        app:
-          baseUrl: https://tap-gui.tap.corby.page
         auth:
           allowGuestAccess: true
           environment: development
@@ -102,10 +100,6 @@ tap_install:
               target: https://github.com/cpage-pivotal/tanzu-java-web-app/blob/main/catalog-info.yaml
             - type: url
               target: https://github.com/cpage-pivotal/dallecool/blob/main/catalog/catalog-info.yaml
-        backend:
-          baseUrl: https://tap-gui.tap.corby.page
-          cors:
-            origin: https://tap-gui.tap.corby.page
         kubernetes:
           serviceLocatorMethod:
             type: 'multiTenant'
