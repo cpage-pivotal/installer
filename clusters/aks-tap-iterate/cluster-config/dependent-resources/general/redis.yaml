@@ -57,7 +57,7 @@ metadata:
   namespace: iterate-corby
 spec:
   virtualhost:
-    fqdn: redis.iterate.corby.page
+    fqdn: redis.iterate.tanzu.corby.page
     tls:
       secretName: contour-tls/tls
   routes:
