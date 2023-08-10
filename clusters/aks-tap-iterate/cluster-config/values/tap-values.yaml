@@ -9,7 +9,7 @@ tap_install:
 
     shared:
       kubernetes_version: "1.25.9"
-      ingress_domain: iterate.corby.page
+      ingress_domain: iterate.tanzu.corby.page
       ingress_issuer: ""
       image_registry:
         project_path: gcr.io/fe-cpage/tap
