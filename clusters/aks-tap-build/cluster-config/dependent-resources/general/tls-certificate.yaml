@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: tls-certificate
+spec:
+  secretName: tls
+  issuerRef:
+    # The issuer created previously
+    name: tls-issuer
+  dnsNames:
+    - "*.iterate.tanzu.corby.cc"
