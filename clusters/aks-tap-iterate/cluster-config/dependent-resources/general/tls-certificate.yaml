@@ -9,4 +9,4 @@ spec:
     # The issuer created previously
     name: tls-issuer
   dnsNames:
-    - "*.iterate.tanzu.corby.cc"
+    - "*.iterate.tanzu.corby.page"
