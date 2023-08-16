@@ -15,6 +15,14 @@ spec:
     - name: annotations
       value:
         autoscaling.knative.dev/minScale: "1"
+    - name: api_descriptor
+      value:
+        type: openapi
+        location:
+          path: "/swagger/v1/swagger.json"
+        system: pet-clinics
+        owner: team-petclinic
+        description: "A set of API endpoints to manage the resources within the petclinic app."
   source:
     git:
       url: https://github.com/vmware-tanzu/application-accelerator-samples
