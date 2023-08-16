@@ -2,9 +2,10 @@ apiVersion: carto.run/v1alpha1
 kind: Workload
 metadata:
   name: weatherforecast-csharp
+  namespace: workload-corby
   labels:
     apps.tanzu.vmware.com/workload-type: web
-    apps.tanzu.vmware.com/has-tests: "true"
+    apps.tanzu.vmware.com/scanning: "true"
     app.kubernetes.io/part-of: sample-app
     tanzu.app.live.view: "true"
     tanzu.app.live.view.application.flavours: steeltoe
