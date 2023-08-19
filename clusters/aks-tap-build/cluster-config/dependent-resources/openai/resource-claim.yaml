@@ -7,4 +7,4 @@ spec:
   ref:
     apiVersion: v1
     kind: Secret
-    name: openai-binding
+    name: openai-binding # comment
