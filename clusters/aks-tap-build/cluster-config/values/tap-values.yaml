@@ -48,8 +48,6 @@ tap_install:
         server_address: https://github.com/
         repository_owner: cpage-pivotal
         repository_name: tap-deliveries
-      carvel_package:
-        workflow_enabled: true
 
     namespace_provisioner:
       controller: false
