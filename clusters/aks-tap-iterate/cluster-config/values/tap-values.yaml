@@ -29,7 +29,9 @@ tap_install:
         server: "gcr.io/fe-cpage"
         repository: "tap/supply-chain"
       gitops:
-        ssh_secret: ""
+        ssh_secret: "git-https"
+      carvel_package:
+        workflow_enabled: true
 
     namespace_provisioner:
       controller: false
