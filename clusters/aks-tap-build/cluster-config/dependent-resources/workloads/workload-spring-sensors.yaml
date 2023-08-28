@@ -22,7 +22,7 @@ spec:
   template:
     - ytt: {}
 
-    deploy:
+  deploy:
     - kapp:
         intoNs: workload-openai
         rawOptions: ["--dangerous-allow-empty-list-of-resources=true"]
