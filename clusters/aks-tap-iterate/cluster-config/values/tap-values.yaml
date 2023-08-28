@@ -29,7 +29,12 @@ tap_install:
         server: "gcr.io/fe-cpage"
         repository: "tap/supply-chain"
       gitops:
-        ssh_secret: "git-https"
+        ssh_secret: git-https
+        branch: main
+        commit_message: "Update from TAP Supply Chain Choreographer"
+        server_address: https://github.com/
+        repository_owner: cpage-pivotal
+        repository_name: tap-deliveries
       carvel_package:
         workflow_enabled: true
 
