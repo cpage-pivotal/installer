@@ -5,7 +5,7 @@ metadata:
   name: spring-sensors
   namespace: workload-openai
 spec:
-  serviceAccountName: sync-sa
+  serviceAccountName: default
   fetch:
     - git:
         url: https://github.com/cpage-pivotal/tap-deliveries
