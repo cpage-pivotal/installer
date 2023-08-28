@@ -5,8 +5,7 @@ metadata:
   name: spring-sensors
   namespace: workload-openai
 spec:
-  # specifies that app should be deployed to destination cluster;
-  # by default, cluster is same as where this resource resides
+  serviceAccountName: sync-sa
   fetch:
     - git:
         url: https://github.com/cpage-pivotal/tap-deliveries
