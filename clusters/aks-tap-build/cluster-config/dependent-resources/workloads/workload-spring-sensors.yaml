@@ -1,23 +1,28 @@
-apiVersion: carto.run/v1alpha1
-kind: Workload
+---
+apiVersion: kappctrl.k14s.io/v1alpha1
+kind: App
 metadata:
   name: spring-sensors
-  namespace: workload-corby
-  labels:
-    apps.tanzu.vmware.com/workload-type: web
-    apps.tanzu.vmware.com/has-tests: "true"
-    app.kubernetes.io/part-of: spring-sensors
+  namespace: workload-openai
 spec:
-  build:
-    env:
-      - name: BP_JVM_VERSION
-        value: "17"
-  source:
-    git:
-      url: https://github.com/cpage-pivotal/spring-sensors
-      ref:
-        branch: main
-  params:
-    - name: annotations
-      value:
-        autoscaling.knative.dev/minScale: "1"
+  # specifies that app should be deployed to destination cluster;
+  # by default, cluster is same as where this resource resides
+  cluster:
+    # specifies namespace in destination cluster
+    namespace: workload-openai
+  fetch:
+    - git:
+        url: https://github.com/cpage-pivotal/tap-deliveries
+        ref: origin/main
+        subPath: spring-sensors.iterate-corby.tap/packages
+    - git:
+        url: https://github.com/cpage-pivotal/tap-deliveries
+        ref: origin/main
+        subPath: spring-sensors.iterate-corby.tap/prod
+  template:
+    - ytt: {}
+
+    deploy:
+    - kapp:
+        intoNs: workload-openai
+        rawOptions: ["--dangerous-allow-empty-list-of-resources=true"]
