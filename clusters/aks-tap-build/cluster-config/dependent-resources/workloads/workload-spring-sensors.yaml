@@ -7,9 +7,6 @@ metadata:
 spec:
   # specifies that app should be deployed to destination cluster;
   # by default, cluster is same as where this resource resides
-  cluster:
-    # specifies namespace in destination cluster
-    namespace: workload-openai
   fetch:
     - git:
         url: https://github.com/cpage-pivotal/tap-deliveries
