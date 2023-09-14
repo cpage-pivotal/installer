@@ -27,5 +27,5 @@ spec:
         project-name: tap-ado-blog
         secret-name: ado-token
         org-name: pcorby
-        pipeline-id: tap-ado-blog
+        pipeline-id: 1
         pipeline-params: "{\"newparam\": \"testing\"}"
