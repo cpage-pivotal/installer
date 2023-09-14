@@ -28,4 +28,4 @@ spec:
         secret-name: ado-token
         org-name: pcorby
         pipeline-id: 1
-        pipeline-params: "{\"newparam\": \"testing\"}"
+        pipeline-params: "{\"example_param\": \"testing\"}"
