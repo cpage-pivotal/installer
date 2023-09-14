@@ -1,0 +1,44 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: developer-defined-ado-pipeline
+  namespace: workload-bnsf
+  labels:
+    #! This label should be provided to the Workload so that
+    #! the supply chain can find this pipeline
+    apps.tanzu.vmware.com/pipeline: ado-pipeline
+spec:
+  results:
+    - name: ado-pipeline-run-url   #! To show the job URL on the
+      #! Tanzu Application Platform GUI
+      value: $(tasks.ado-task.results.ado-pipeline-run-url)
+  params:
+    - name: source-url        #! Required
+    - name: source-revision   #! Required
+    - name: secret-name       #! Required
+    - name: project-name       #! Required
+    - name: pipeline-id       #! Required
+    - name: org-name           #! Required
+    - name: pipeline-params
+      default: ""
+  tasks:
+    - name: ado-task
+      taskRef:
+        name: ado-task
+        kind: ClusterTask
+      params:
+        - name: source-url
+          value: $(params.source-url)
+        - name: source-revision
+          value: $(params.source-revision)
+        - name: secret-name
+          value: $(params.secret-name)
+        - name: pipeline-id
+          value: $(params.pipeline-id)
+        - name: org-name
+          value: $(params.org-name)
+        - name: project-name
+          value: $(params.project-name)
+        - name: pipeline-params
+          value: $(params.pipeline-params)
