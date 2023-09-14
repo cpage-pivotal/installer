@@ -26,6 +26,6 @@ spec:
       value:
         project-name: tap-ado-blog
         secret-name: ado-token
-        org-name: pcorby
+        org-name: tap-tsl
         pipeline-id: 1
         pipeline-params: "{\"example_param\": \"testing\"}"
