@@ -45,7 +45,7 @@ spec:
           value: $(params.org-name)
         - name: PROJECT_NAME
           value: $(params.project-name)
-      image:  <your-relocated-image-here>
+      image:  gcr.io/fe-cpage/tap/tap-packages@sha256:a22a2947502eb4be23b154c7197c9db39ebe5b8b9a9c9c3ae5ecc8932f0a1465
       name: trigger-ado-build
       script: |
         #!/usr/bin/env bash
