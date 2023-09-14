@@ -1,0 +1,125 @@
+apiVersion: tekton.dev/v1beta1
+kind: ClusterTask
+metadata:
+  name: ado-task
+spec:
+  params:
+    - name: source-url
+      type: string
+    - name: source-revision
+      type: string
+    - name: secret-name
+      type: string
+    - name: pipeline-id
+      type: string
+    - name: project-name
+      type: string
+    - name: org-name
+      type: string
+    - default: ""
+      name: pipeline-params
+      type: string
+  results:
+    - name: ado-pipeline-run-url
+      type: string
+  steps:
+    - name: install-depends
+      image:  gcr.io/fe-cpage/tap/tap-packages@sha256:a22a2947502eb4be23b154c7197c9db39ebe5b8b9a9c9c3ae5ecc8932f0a1465
+      script: |
+        pip install requests
+    - env:
+        - name: ADO_API_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: pat
+              name: $(params.secret-name)
+        - name: SOURCE_URL
+          value: $(params.source-url)
+        - name: PIPELINE_PARAMS
+          value: $(params.pipeline-params)
+        - name: SOURCE_REVISION
+          value: $(params.source-revision)
+        - name: PIPELINE_ID
+          value: $(params.pipeline-id)
+        - name: ORG_NAME
+          value: $(params.org-name)
+        - name: PROJECT_NAME
+          value: $(params.project-name)
+      image:  <your-relocated-image-here>
+      name: trigger-ado-build
+      script: |
+        #!/usr/bin/env bash
+        set -o errexit
+        set -o pipefail
+        pip install requests
+        
+        python3 << END
+        import os
+        import subprocess
+        import logging
+        import sys
+        import time
+        import json
+        import requests
+        
+        
+        logging.basicConfig(level=logging.DEBUG)
+        
+        org = os.getenv('ORG_NAME')
+        project = os.getenv('PROJECT_NAME')
+        pipeline = os.getenv('PIPELINE_ID')
+        token = os.getenv('ADO_API_TOKEN')
+        source_url = os.getenv('SOURCE_URL')
+        source_revision = os.getenv('SOURCE_REVISION')
+        pipeline_params = os.getenv('PIPELINE_PARAMS')
+        
+        url = f'https://dev.azure.com/{org}/{project}/_apis/pipelines/{pipeline}/runs?api-version=7.0'
+        existing_params = {
+            "source_url": f'{source_url}',
+            "source_revision": f'{source_revision}'
+        }
+        
+        input_params = {}
+        if pipeline_params != "":
+          input_params = json.loads(pipeline_params)
+        
+        existing_params.update(input_params)
+        payload = json.dumps({
+        "templateParameters": existing_params
+        })
+        
+        headers = {
+        'Content-Type': 'application/json'
+        }
+        
+        pipelineResponse = requests.request("POST", url, headers=headers, data=payload,auth=('',token)) 
+        logging.info(pipelineResponse.text)
+        #throw error if not 200
+        pipelineResponse.raise_for_status()
+        
+        #check status of pipeline run and validate it succeeds
+        
+        jsonResponse = pipelineResponse.json()
+        
+        currentRun = jsonResponse['_links']['self']['href']
+        results_url = jsonResponse['_links']['web']['href']
+        f = open("$(results.ado-pipeline-run-url.path)", "w")
+        f.write(results_url)
+        f.close()
+        
+        
+        running = True
+        while running:
+          response = requests.get(currentRun, headers=headers, auth=('',token), timeout=300)
+          response.raise_for_status()
+          result = response.json()
+          if result['state'] != 'completed':
+            logging.info(f"pipeline state is {result['state']}, entering sleep for 5 seconds")
+            time.sleep(5)
+          elif result['result'] == 'succeeded':
+            logging.info(f"pipeline was successful, exiting")
+            sys.exit(os.EX_OK)
+          else:
+            logging.info(f"pipeline result is {result['result']}, check ADO")
+            sys.exit(os.EX_SOFTWARE)
+        END
