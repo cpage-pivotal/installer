@@ -85,7 +85,7 @@ tap_install:
         secretName: tls
       app_config:
         auth:
-          allowGuestAccess: true
+          allowGuestAccess: false
           environment: development
         integrations:
           github:
@@ -196,19 +196,6 @@ tap_install:
             - group: 'app-scanning.apps.tanzu.vmware.com'
               apiVersion: 'v1alpha1'
               plural: 'imagevulnerabilityscans'
-
-    springboot_conventions:
-      autoConfigureActuators: true
-      livenessProbe:
-        initialDelaySeconds: 11
-        periodSeconds: 12
-        timeoutSeconds: 13
-        terminationGracePeriodSeconds: 14
-      readinessProbe:
-        initialDelaySeconds: 15
-        periodSeconds: 12
-        successThreshold: 3
-        failureThreshold: 4
 
     metadata_store:
       app_service_type: ClusterIP # (optional) Defaults to LoadBalancer. Change to NodePort for distributions that don't support LoadBalancer
