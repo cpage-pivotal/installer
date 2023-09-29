@@ -21,6 +21,4 @@ spec:
     - name: annotations
       value:
         autoscaling.knative.dev/minScale: "1"
-    - name: additionalTags
-      value: ["gcr.io/fe-cpage/tap/supply-chain/spring-sensors-workload-corby/spring-sensors-latest"]
 
