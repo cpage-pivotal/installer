@@ -1,7 +1,7 @@
 apiVersion: carto.run/v1alpha1
 kind: Workload
 metadata:
-  name: spring-sensors
+  name: spring
   namespace: workload-corby
   labels:
     apps.tanzu.vmware.com/workload-type: web
@@ -21,3 +21,6 @@ spec:
     - name: annotations
       value:
         autoscaling.knative.dev/minScale: "1"
+    - name: additionalTags
+      value: tap-tags
+
