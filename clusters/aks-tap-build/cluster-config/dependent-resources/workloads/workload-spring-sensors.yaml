@@ -22,5 +22,5 @@ spec:
       value:
         autoscaling.knative.dev/minScale: "1"
     - name: additionalTags
-      value: ["tap-tags"]
+      value: ["gcr.io/fe-cpage/build/spring-sensors-latest"]
 
