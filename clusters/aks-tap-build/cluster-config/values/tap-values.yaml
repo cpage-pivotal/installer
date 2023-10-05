@@ -104,10 +104,6 @@ tap_install:
       app_service_type: ClusterIP # (optional) Defaults to LoadBalancer. Change to NodePort for distributions that don't support LoadBalancer
       ns_for_export_app_cert: "*"
 
-    scanning:
-      metadataStore:
-        url: "" # Disable embedded integration since it's deprecated
-
     grype:
       namespace: "default" # (optional) Defaults to default namespace.
       targetImagePullSecret: "registry-credentials"
