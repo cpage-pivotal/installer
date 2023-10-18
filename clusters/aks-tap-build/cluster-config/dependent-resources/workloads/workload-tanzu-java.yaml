@@ -14,7 +14,7 @@ spec:
         value: "17"
   source:
     git:
-      url: https://github.com/cpage-pivotal/tanzu-java-web-app
+      url: https://dev.azure.com/tap-tsl/tanzu-java-web-app/_git/tanzu-java-web-app
       ref:
-        branch: main
+        branch: supply-chain
 
