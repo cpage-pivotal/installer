@@ -2,5 +2,5 @@ tap_install:
   package_repository:
     oci_repository: registry.tanzu.vmware.com/tanzu-application-platform/tap-packages
   version:
-    package_repo_bundle_tag: "1.7.0-rc.7"
-    package_version: "1.7.0-rc.7"
+    package_repo_bundle_tag: "1.7.0-rc.8"
+    package_version: "1.7.0-rc.8"
