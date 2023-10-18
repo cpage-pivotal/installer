@@ -14,7 +14,6 @@ spec:
         value: "17"
   source:
     git:
-      # url: https://dev.azure.com/tap-tsl/tanzu-java-web-app/_git/tanzu-java-web-app
       url: https://tap-tsl@dev.azure.com/tap-tsl/tanzu-java-web-app/_git/tanzu-java-web-app
       ref:
         branch: supply-chain
