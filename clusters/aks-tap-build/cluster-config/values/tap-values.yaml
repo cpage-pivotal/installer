@@ -62,7 +62,7 @@ tap_install:
       default_parameters:
         supply_chain_service_account:
           secrets:
-            - git-https
+#            - git-https
             - azure-devops-https
           imagePullSecrets: [] # optional
 
