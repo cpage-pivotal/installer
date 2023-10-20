@@ -1,8 +1,8 @@
 app:
   plugins:
-    - name: '@tpb/plugin-hello-world'
-      version: '^1.6.0-release-1.6.x.1'
+    - name: '@vmware-tanzu/tdp-plugin-techinsights'
+      version: '0.0.2'
 backend:
   plugins:
-    - name: '@tpb/plugin-hello-world-backend'
-      version: '^1.6.0-release-1.6.x.1'
+    - name: '@vmware-tanzu/tdp-plugin-techinsights-backend'
+      version: '0.0.2'
