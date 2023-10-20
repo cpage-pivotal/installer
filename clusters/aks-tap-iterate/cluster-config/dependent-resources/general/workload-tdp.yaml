@@ -1,0 +1,20 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: tdp-configurator
+  namespace: iterate-corby
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    app.kubernetes.io/part-of: tdp-configurator
+spec:
+  build:
+    env:
+      - name: BP_NODE_RUN_SCRIPTS
+        value: 'set-tpb-config,portal:pack'
+      - name: TPB_CONFIG
+        value: /tmp/tbp-config.yaml
+      - name: TPB_CONFIG_STRING
+        value: YXBwOgogIHBsdWdpbnM6CiAgICAtIG5hbWU6ICdAdm13YXJlLXRhbnp1L3RkcC1wbHVnaW4tdGVjaGluc2lnaHRzJwogICAgICB2ZXJzaW9uOiAnMC4wLjInCmJhY2tlbmQ6CiAgcGx1Z2luczoKICAgIC0gbmFtZTogJ0B2bXdhcmUtdGFuenUvdGRwLXBsdWdpbi10ZWNoaW5zaWdodHMtYmFja2VuZCcKICAgICAgdmVyc2lvbjogJzAuMC4yJwo=
+  source:
+    image: registry.tanzu.vmware.com/tanzu-application-platform/tap-packages@sha256:bea2f5bec5c5102e2a69a4c5047fae3d51f29741911cf5bb588893aa4e03ca27
+    subPath: builder
