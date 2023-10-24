@@ -1,0 +1,8 @@
+app:
+  plugins:
+    - name: '@cepage/plugin-tech-insights-wrapper'
+      version: '1.0.0'
+backend:
+  plugins:
+    - name: '@cepage/plugin-tech-insights-wrapper-backend'
+      version: '1.0.0'
