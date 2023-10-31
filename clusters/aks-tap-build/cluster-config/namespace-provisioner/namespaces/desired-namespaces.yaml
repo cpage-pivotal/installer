@@ -3,4 +3,3 @@
 namespaces:
   - name: workload-corby
   - name: workload-openai
-  - name: workload-bnsf

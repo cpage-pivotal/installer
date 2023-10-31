@@ -1,0 +1,24 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: spring-sensors
+  namespace: workload-corby
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    apps.tanzu.vmware.com/scanning: "true"
+    app.kubernetes.io/part-of: tanzu-java-web-app
+spec:
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "17"
+  source:
+    git:
+      url: https://github.com/cpage-pivotal/tanzu-java-web-app
+      ref:
+        branch: supply-chain
+  params:
+    - name: annotations
+      value:
+        autoscaling.knative.dev/minScale: "1"
+
