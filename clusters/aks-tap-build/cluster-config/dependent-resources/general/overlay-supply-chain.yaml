@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: supply-chain-overlay
+  namespace: tap-install
+stringData:
+  custom-package-overlay.yml: |
+    #@ load("@ytt:overlay", "overlay")
+
+    #@ def testing_step():
+    name: source-tester
+    #@ end
+    
+    #@ def image_step():
+    name: image-provider
+    sources:
+      - name: source
+        resource: source-tester
+    #@ end
+    
+    #@overlay/match by=overlay.subset({"kind": "ClusterSupplyChain", "metadata": {"name": "source-test-scan-to-url"}}), expects="1+"
+    ---
+    metadata:
+      #@overlay/replace
+      name: source-scan-to-url
+    
+    spec:
+      resources:
+        #@overlay/match by=overlay.subset(testing_step())
+        #@overlay/remove
+        - name: source-tester
+        
+        #@overlay/match by=overlay.subset(image_step())
+        - sources:
+            #@overlay/match by=overlay.index(0)
+            - name: source
+              resource: source-provider
+    
+      #@overlay/replace via=lambda left, right: {"apps.tanzu.vmware.com/scanning": left["apps.tanzu.vmware.com/has-tests"]}
+      selector:
