@@ -3,6 +3,9 @@ kind: Deliverable
 metadata:
   name: spring-sensors
   namespace: workload-openai
+  labels:
+    app.tanzu.vmware.com/deliverable-type: web
+    app.kubernetes.io/part-of: spring-sensors
 spec:
   # The location of the source code for the workload. Specify one
   # of `spec.source` or `spec.image`
