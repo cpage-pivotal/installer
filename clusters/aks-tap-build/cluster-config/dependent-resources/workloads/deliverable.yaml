@@ -14,7 +14,7 @@ spec:
     git:
       ref:
         branch: main
-      url: https://github.com/cpage-pivotal/tap-deliveries
+      url: https://github.com/cpage-pivotal/tap-deliveries.git
 
     # Subpath inside the Git repository or Image to treat as the
     # root of the application. Defaults to the root if left empty.
