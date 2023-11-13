@@ -1,0 +1,44 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: tdp-secret-role
+  namespace: workload-tdp
+rules:
+- apiGroups:
+  - ""
+  resourceNames:
+  - tdp-app-image-overlay-secret
+  resources:
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - list
+  - get
+  - watch
+  - create
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: tdp-secret-role-binding
+  namespace: workload-tdp
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: workload-tdp
+roleRef:
+  kind: Role
+  name: tdp-secret-role
+  apiGroup: rbac.authorization.k8s.io

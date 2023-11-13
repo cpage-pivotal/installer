@@ -1,0 +1,47 @@
+apiVersion: carto.run/v1alpha1
+kind: ClusterSupplyChain
+metadata:
+  name: tdp-configurator
+spec:
+  resources:
+  - name: source-provider
+    params:
+    - default: default
+      name: serviceAccount
+    - default: registry.tanzu.vmware.com/tanzu-application-platform/tap-packages@sha256:bea2f5bec5c5102e2a69a4c5047fae3d51f29741911cf5bb588893aa4e03ca27
+      name: tdp_configurator_bundle
+    templateRef:
+      kind: ClusterSourceTemplate
+      name: tdp-source-template
+  - name: image-provider
+    params:
+    - default: default
+      name: serviceAccount
+    - name: registry
+      default:
+        ca_cert_data: ""
+        repository: tap/supply-chain
+        server: gcr.io/fe-cpage
+    - default: default
+      name: clusterBuilder
+    sources:
+    - name: source
+      resource: source-provider
+    templateRef:
+      kind: ClusterImageTemplate
+      name: tdp-kpack-template
+  - images:
+    - name: image
+      resource: image-provider
+    params:
+    - default: lite
+      name: tbs_dependency_mode
+    name: config-provider
+    templateRef:
+      kind: ClusterConfigTemplate
+      name: tdp-overlay-template
+  selectorMatchExpressions:
+  - key: apps.tanzu.vmware.com/workload-type
+    operator: In
+    values:
+    - tdp
