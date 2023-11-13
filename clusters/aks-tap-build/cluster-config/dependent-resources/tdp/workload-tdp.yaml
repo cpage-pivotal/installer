@@ -9,8 +9,6 @@ metadata:
 spec:
   build:
     env:
-#      - name: TPB_CONFIG_STRING
-#        value: YXBwOgogIHBsdWdpbnM6CiAgICAtIG5hbWU6ICdAdm13YXJlLXRhbnp1L3RkcC1wbHVnaW4tdGVjaGluc2lnaHRzJwogICAgICB2ZXJzaW9uOiAnMC4wLjInCmJhY2tlbmQ6CiAgcGx1Z2luczoKICAgIC0gbmFtZTogJ0B2bXdhcmUtdGFuenUvdGRwLXBsdWdpbi10ZWNoaW5zaWdodHMtYmFja2VuZCcKICAgICAgdmVyc2lvbjogJzAuMC4yJwo=
       - name: TPB_PLUGINS
         value: |
           app:
