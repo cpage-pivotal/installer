@@ -59,7 +59,7 @@ spec:
     #@ bp_node_run_scripts = "set-tpb-config,portal:pack"
     #@ tpb_config = "/tmp/tpb-config.yaml"
 
-    #@ if not empty data.values.workload.spec.build.env:
+    #@ if hasattr(data.values.workload.spec, "build"):
     #@   for env in data.values.workload.spec.build:
     #@     if env.name == "TPB_CONFIG_STRING":
     #@       tpb_config_string = env.value
