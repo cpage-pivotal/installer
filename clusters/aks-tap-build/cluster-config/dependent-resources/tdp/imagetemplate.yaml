@@ -74,6 +74,12 @@ spec:
     #@   end
     #@ end
     
+    #@ for param in data.values.workload.spec.params:
+    #@   if param.name == "tdp_plugins":
+    #@     tpb_config_string = base64.encode(param.value)
+    #@   end
+    #@ end
+    
     apiVersion: kpack.io/v1alpha2
     kind: Image
     metadata:
