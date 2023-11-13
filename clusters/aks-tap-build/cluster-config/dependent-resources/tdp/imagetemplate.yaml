@@ -59,24 +59,25 @@ spec:
     #@ bp_node_run_scripts = "set-tpb-config,portal:pack"
     #@ tpb_config = "/tmp/tpb-config.yaml"
 
-    #@ for env in data.values.workload.spec.build.env:
-    #@   if env.name == "TPB_CONFIG_STRING":
-    #@     tpb_config_string = env.value
-    #@   end
-    #@   if env.name == "BP_NODE_RUN_SCRIPTS":
-    #@     bp_node_run_scripts = env.value
-    #@   end
-    #@   if env.name == "TPB_CONFIG":
-    #@     tpb_config = env.value
-    #@   end
-    #@   if env.name == "TPB_PLUGINS":
-    #@     tpb_config_string = base64.encode(env.value)
+    #@ if hasattr(data.values.workload.spec, "build"):
+    #@   for env in data.values.workload.spec.build.env:
+    #@     if env.name == "TPB_CONFIG_STRING":
+    #@       tpb_config_string = env.value
+    #@     end
+    #@     if env.name == "BP_NODE_RUN_SCRIPTS":
+    #@       bp_node_run_scripts = env.value
+    #@     end
+    #@     if env.name == "TPB_CONFIG":
+    #@       tpb_config = env.value
+    #@     end
     #@   end
     #@ end
     
-    #@ for param in data.values.workload.spec.params:
-    #@   if param.name == "tdp_plugins":
-    #@     tpb_config_string = base64.encode(param.value)
+    #@ if hasattr(data.values.workload.spec, "params"):
+    #@   for param in data.values.workload.spec.params:
+    #@     if param.name == "tdp_plugins":
+    #@       tpb_config_string = base64.encode(param.value)
+    #@     end
     #@   end
     #@ end
     
