@@ -59,7 +59,7 @@ spec:
     #@ bp_node_run_scripts = "set-tpb-config,portal:pack"
     #@ tpb_config = "/tmp/tpb-config.yaml"
 
-    #@ if build in data.values.workload.spec:
+    #@ if "build" in data.values.workload.spec:
     #@   for env in data.values.workload.spec.build.env:
     #@     if env.name == "TPB_CONFIG_STRING":
     #@       tpb_config_string = env.value
@@ -73,7 +73,7 @@ spec:
     #@   end
     #@ end
     
-    #@ if params in data.values.workload.spec:
+    #@ if "params" in data.values.workload.spec:
     #@   for param in data.values.workload.spec.params:
     #@     if param.name == "tpb_plugins":
     #@       tpb_config_string = base64.encode(param.value)
