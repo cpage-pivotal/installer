@@ -29,7 +29,7 @@ spec:
   ytt: |
     #@ load("@ytt:data", "data")
     #@ load("@ytt:regexp", "regexp")
-    @# load("@ytt:base64", "base64")
+    #@ load("@ytt:base64", "base64")
 
     #@ def merge_labels(fixed_values):
     #@   labels = {}
