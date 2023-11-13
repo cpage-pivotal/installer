@@ -70,10 +70,11 @@ spec:
     #@     if env.name == "TPB_CONFIG":
     #@       tpb_config = env.value
     #@     end
+    #@     if env.name == "TPB_PLUGINS":
+    #@       tpb_config_string = base64.encode(env.value)
+    #@     end
     #@   end
     #@ end
-    
-    #@ tpb_config_string = base64.decode(data.values.workload.spec.tpb_config)
     
     apiVersion: kpack.io/v1alpha2
     kind: Image

@@ -7,18 +7,19 @@ metadata:
     apps.tanzu.vmware.com/workload-type: tdp
     app.kubernetes.io/part-of: tdp-configurator
 spec:
-  tpb_config: |
-    app:
-      plugins:
-        - name: '@vmware-tanzu/tdp-plugin-techinsights'
-          version: '0.0.2'
-        - name: '@vrabbi/dev-toolbox-wrapper'
-          version: '0.1.0'
-    backend:
-      plugins:
-        - name: '@vmware-tanzu/tdp-plugin-techinsights-backend'
-          version: '0.0.2'
-#  build:
-#    env:
+  build:
+    env:
 #      - name: TPB_CONFIG_STRING
 #        value: YXBwOgogIHBsdWdpbnM6CiAgICAtIG5hbWU6ICdAdm13YXJlLXRhbnp1L3RkcC1wbHVnaW4tdGVjaGluc2lnaHRzJwogICAgICB2ZXJzaW9uOiAnMC4wLjInCmJhY2tlbmQ6CiAgcGx1Z2luczoKICAgIC0gbmFtZTogJ0B2bXdhcmUtdGFuenUvdGRwLXBsdWdpbi10ZWNoaW5zaWdodHMtYmFja2VuZCcKICAgICAgdmVyc2lvbjogJzAuMC4yJwo=
+      - name: TPB_PLUGINS
+        value: |
+          app:
+            plugins:
+              - name: '@vmware-tanzu/tdp-plugin-techinsights'
+                version: '0.0.2'
+              - name: '@vrabbi/dev-toolbox-wrapper'
+                version: '0.1.0'
+          backend:
+            plugins:
+              - name: '@vmware-tanzu/tdp-plugin-techinsights-backend'
+                version: '0.0.2'
