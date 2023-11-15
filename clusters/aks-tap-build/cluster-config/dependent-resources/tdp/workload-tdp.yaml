@@ -12,11 +12,11 @@ spec:
       value: |
         app:
           plugins:
-            - name: '@vmware-tanzu/tdp-plugin-techinsights'
-              version: '0.0.2'
+            - name: '@cepage/plugin-tech-insights-wrapper'
+              version: '1.1.0'
             - name: '@vrabbi/dev-toolbox-wrapper'
               version: '0.1.0'
         backend:
           plugins:
-            - name: '@vmware-tanzu/tdp-plugin-techinsights-backend'
-              version: '0.0.2'
+            - name: '@cepage/plugin-tech-insights-wrapper-backend'
+              version: '1.1.0'
