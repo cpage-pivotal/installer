@@ -14,10 +14,6 @@ spec:
           plugins:
             - name: '@cepage/plugin-tech-insights-wrapper'
               version: '1.1.0'
-            - name: '@vrabbi/dev-toolbox-wrapper'
-              version: '0.1.0'
-            - name: '@vrabbi/tech-radar-wrapper'
-              version: '0.1.0'
         backend:
           plugins:
             - name: '@cepage/plugin-tech-insights-wrapper-backend'
