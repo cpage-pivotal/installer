@@ -13,7 +13,7 @@ tap_install:
                         github:
                             development:
                                 clientId: ENC[AES256_GCM,data:5qFkIF3doxVxqZcYzRkP66Gv5IA=,iv:aTRAQt5CFJ9PgDPM9UKT798QECaSOqs1l0eImrxDwiE=,tag:NVoWdosRc7Fw1d/YPh2SSg==,type:str]
-                                clientSecret: ENC[AES256_GCM,data:jsnvallhZY7uqVd5Gq3My2UPJzpeO5dwNxr5a/k6RrblGT721gebGg==,iv:CBjTwAC+csdQ4pKKCxIfYTvWMVsHY8DGCcMuOwTqn0E=,tag:QdMV9ZH2QtwkQ7e99Ot7JA==,type:str]
+                                clientSecret: ENC[AES256_GCM,data:F8P7ZQsA9Sgg91Ap4zd6UbEjEg55Df55vX6fw5fEhumofyY/mpwR/g==,iv:Nz8Fkr7cP7JeqgFEJn+WqVs17U2c3/HItqLTEU6D+ik=,tag:CudUqdfjG780sHQT+i/Now==,type:str]
                 kubernetes:
                     serviceLocatorMethod:
                         type: ENC[AES256_GCM,data:WkLRoAJm6Mg/hqY=,iv:o/7owlUf6Ni2WnuL4xkfsnH8SqxkL3eNzWbG5mTDnrg=,tag:iKpiAbEP+/8lhF4vtkdU0g==,type:str]
@@ -51,8 +51,8 @@ sops:
             T3B6UHBiV1FqZTBkVDhwVUhCYVQrcVEK2kAoMT6fvCerZ/fLHP/S02lBCg57b0aG
             iTHTQ0qLNbAawrGglG1bICZ8lKgMQtKIPcM+5vZahUNL5VKBRhb39A==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-11-29T19:19:57Z"
-    mac: ENC[AES256_GCM,data:O0O0QifdLkjX3vHG/RLPGct5bvYe+KCF/zq7cKYj4a5uGktY56/OHgGhzQM98/glweEM2+JDyv5S+Vn8aRXAVyi1etJMHSmcjIznN2p3+6xk6a8RL+GfRxgMCxXn2Kli1wkGfwkWCPIpbxuYNWyPbkq8DC2VmhVddt0IMswVIPA=,iv:kPMIAgZEjJoMYxrQNOzXwrAPK2fmNXLfZdNKFaYmNdo=,tag:S+1NBFkBfMMOB3nIAwVp6A==,type:str]
+    lastmodified: "2023-11-30T22:59:30Z"
+    mac: ENC[AES256_GCM,data:hSVS2nmXZy+o4ZqXcLGGNCaoLRm8Shvy8ska+zUSiNTDuuUhQgaxsDkDFyfqfPZk8VyHNOcd704REbCVosbP7I+ivuOek1ts774BLIE3zCvXNmkHqfBac6dPUFg6gb5F76y7h7vHgiNHDhuooFyGuVuHQM6zJL3w4lJiZf0zZOw=,iv:erhn0UT0VqQrmtQku+sql3hoe3OEPmGjF0ajyxRpGFE=,tag:xSxEJF/8KZ3xWwRrCYoxCg==,type:str]
     pgp: []
     unencrypted_suffix: _unencrypted
     version: 3.8.0
