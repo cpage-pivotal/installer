@@ -1,7 +1,6 @@
 tap_install:
     sensitive_values:
         #ENC[AES256_GCM,data:MnKQYsiOqBFyxCVFN8+3G55WaUjFijbXMwoqS5Wy7NFt+Qyz2ajos9qRPStkGQ==,iv:EAN60JS0EnojCwZLghywBklRydB3G1nrc2cx5cdj79c=,tag:Pj8fZsQ7/NCK6V+PAk8FTg==,type:comment]
-        #ENC[AES256_GCM,data:MnKQYsiOqBFyxCVFN8+3G55WaUjFijbXMwoqS5Wy7NFt+Qyz2ajos9qRPStkGQ==,iv:EAN60JS0EnojCwZLghywBklRydB3G1nrc2cx5cdj79c=,tag:Pj8fZsQ7/NCK6V+PAk8FTg==,type:comment]
         shared:
             image_registry:
                 username: ENC[AES256_GCM,data:tgFFUk98IcQP,iv:ba2sRxeNsiPn9DMYhmMpAEincVSjDHlqkpPlFkWjvc8=,tag:WgPaht+eu605aP/BMW044g==,type:str]
@@ -51,8 +50,8 @@ sops:
             T3B6UHBiV1FqZTBkVDhwVUhCYVQrcVEK2kAoMT6fvCerZ/fLHP/S02lBCg57b0aG
             iTHTQ0qLNbAawrGglG1bICZ8lKgMQtKIPcM+5vZahUNL5VKBRhb39A==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-11-30T22:59:30Z"
-    mac: ENC[AES256_GCM,data:hSVS2nmXZy+o4ZqXcLGGNCaoLRm8Shvy8ska+zUSiNTDuuUhQgaxsDkDFyfqfPZk8VyHNOcd704REbCVosbP7I+ivuOek1ts774BLIE3zCvXNmkHqfBac6dPUFg6gb5F76y7h7vHgiNHDhuooFyGuVuHQM6zJL3w4lJiZf0zZOw=,iv:erhn0UT0VqQrmtQku+sql3hoe3OEPmGjF0ajyxRpGFE=,tag:xSxEJF/8KZ3xWwRrCYoxCg==,type:str]
+    lastmodified: "2023-12-06T20:27:41Z"
+    mac: ENC[AES256_GCM,data:ntgF43J1zDsArPv9ko7VVAbtS5VlvamQGICWA/4kySIK4ykJY7x+CcE3frBhkkQGtm1vMkgIAcGSygS2GpGjMbxF0kKDcQfatecvUF8CjemMujqhNAOGS+lJhDIBRDQ4bdKY4ySYEa4AtnT+2lyR3bbYgMentbwsluuZbk4VlCM=,iv:ibxdCDPXMZgCXttroynNV5BUcpZ9KsOqhTZ1gar1rdY=,tag:YxOjMw5TxEu4gR+Yv/e4Lg==,type:str]
     pgp: []
     unencrypted_suffix: _unencrypted
     version: 3.8.0

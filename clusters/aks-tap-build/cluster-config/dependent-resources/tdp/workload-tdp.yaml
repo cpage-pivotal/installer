@@ -15,7 +15,9 @@ spec:
             - name: '@cepage/plugin-tech-insights-wrapper'
               version: '1.1.0'
             - name: '@cepage/plugin-mlworkflows-wrapper'
-              version: '0.1.13'
+              version: '0.2.0'
+            - name: '@cepage/plugin-mlworkflows-wrapper-backend'
+              version: '0.1.0'
         backend:
           plugins:
             - name: '@cepage/plugin-tech-insights-wrapper-backend'
