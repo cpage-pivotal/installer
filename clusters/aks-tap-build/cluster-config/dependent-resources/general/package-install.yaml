@@ -1,0 +1,16 @@
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: scg-operator
+  namespace: tap-install
+spec:
+  packageRef:
+    refName: spring-cloud-gateway.tanzu.vmware.com
+    versionSelection:
+      #! constraints: 2.1.4
+      constraints: ">0.0.1"
+      prereleases: {}
+  serviceAccountName: tap-install-sa
+  values:
+    - secretRef:
+        name: tap.tanzu.vmware.com-fetch-0
