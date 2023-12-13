@@ -94,9 +94,14 @@ tap_install:
               target: https://github.com/cpage-pivotal/tanzu-java-web-app/blob/main/catalog-info.yaml
             - type: url
               target: https://github.com/cpage-pivotal/dallecool/blob/main/catalog/catalog-info.yaml
+            - type: url
+              target: https://github.com/tanzumldemos/backstage-ml-panel/blob/main/yaml/static/tools.yaml
         kubernetes:
           serviceLocatorMethod:
             type: 'multiTenant'
+        mlbackstage:
+          clusterName: local
+          imageRepoBaseUrl: https://github.com/tanzumldemos/backstage-ml-panel/blob/main/images
 
     package_overlays:
       - name: tap-gui
