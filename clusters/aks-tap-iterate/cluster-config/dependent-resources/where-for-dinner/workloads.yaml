@@ -1,0 +1,327 @@
+#apiVersion: carto.run/v1alpha1
+#kind: Workload
+#metadata:
+#  name: where-for-dinner
+#  namespace: where-for-dinner
+#  labels:
+#    apps.tanzu.vmware.com/workload-type: web
+#    app.kubernetes.io/part-of: where-for-dinner-api-gateway
+#    apps.tanzu.vmware.com/auto-configure-actuators: "true"
+#    apps.tanzu.vmware.com/has-tests: "true"
+#    apps.tanzu.vmware.com/carvel-package-workflow: "true"
+#spec:
+#  env: null
+#  params:
+#    - name: annotations
+#      value:
+#        autoscaling.knative.dev/minScale: "1"
+#        autoscaling.knative.dev/target: "200"
+#        autoscaling.knative.dev/maxScale: "4"
+#  serviceClaims: null
+#  resources:
+#    requests:
+#      memory: 500M
+#      cpu: 100m
+#    limits:
+#      memory: 750M
+#      cpu: 1500m
+#  build:
+#    env:
+#      - name: BP_JVM_VERSION
+#        value: "17"
+#  source:
+#    git:
+#      url: https://github.com/cpage-pivotal/where-for-dinner
+#      ref:
+#        branch: main
+#    subPath: where-for-dinner-api-gateway
+#---
+#apiVersion: carto.run/v1alpha1
+#kind: Workload
+#metadata:
+#  name: where-for-dinner-search
+#  namespace: where-for-dinner
+#  labels:
+#    apps.tanzu.vmware.com/workload-type: web
+#    app.kubernetes.io/part-of: where-for-dinner-search
+#    networking.knative.dev/visibility: cluster-local
+#    apps.tanzu.vmware.com/auto-configure-actuators: "true"
+#    apps.tanzu.vmware.com/has-tests: "true"
+#    apis.apps.tanzu.vmware.com/register-api: "true"
+#    apps.tanzu.vmware.com/carvel-package-workflow: "true"
+#spec:
+#  env:
+#    - name: spring_profiles_active
+#      value: rabbitmq
+#  build:
+#    env:
+#      - name: BP_JVM_VERSION
+#        value: "17"
+#      - name: BP_MAVEN_ACTIVE_PROFILES
+#        value: streams
+#  params:
+#    - name: annotations
+#      value:
+#        autoscaling.knative.dev/minScale: "1"
+#        autoscaling.knative.dev/target: "200"
+#        autoscaling.knative.dev/maxScale: "4"
+#    - name: api_descriptor
+#      value:
+#        type: openapi
+#        location:
+#          path: /v3/api-docs
+#        system: where-for-dinner
+#        owner: where-for-dinner-team
+#        description: Core Where for Dinner service for submitting searches and parameters
+#  serviceClaims:
+#    - name: rmq
+#      ref:
+#        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+#        kind: ClassClaim
+#        name: msgbroker-where-for-dinner
+#  resources:
+#    requests:
+#      memory: 500M
+#      cpu: 100m
+#    limits:
+#      memory: 750M
+#      cpu: 1500m
+#  source:
+#    git:
+#      url: https://github.com/cpage-pivotal/where-for-dinner
+#      ref:
+#        branch: main
+#    subPath: where-for-dinner-search
+#---
+#apiVersion: carto.run/v1alpha1
+#kind: Workload
+#metadata:
+#  name: where-for-dinner-search-proc
+#  namespace: where-for-dinner
+#  labels:
+#    apps.tanzu.vmware.com/workload-type: web
+#    app.kubernetes.io/part-of: where-for-dinner-search-proc
+#    networking.knative.dev/visibility: cluster-local
+#    apps.tanzu.vmware.com/auto-configure-actuators: "true"
+#    apps.tanzu.vmware.com/has-tests: "true"
+#    apps.tanzu.vmware.com/carvel-package-workflow: "true"
+#spec:
+#  env:
+#    - name: spring_profiles_active
+#      value: crawler,rabbitmq
+#  build:
+#    env:
+#      - name: BP_JVM_VERSION
+#        value: "17"
+#      - name: BP_MAVEN_ACTIVE_PROFILES
+#        value: streams
+#  params:
+#    - name: annotations
+#      value:
+#        autoscaling.knative.dev/minScale: "1"
+#        autoscaling.knative.dev/target: "200"
+#        autoscaling.knative.dev/maxScale: "4"
+#  serviceClaims:
+#    - name: rmq
+#      ref:
+#        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+#        kind: ClassClaim
+#        name: msgbroker-where-for-dinner
+#  resources:
+#    requests:
+#      memory: 500M
+#      cpu: 100m
+#    limits:
+#      memory: 750M
+#      cpu: 1500m
+#  source:
+#    git:
+#      url: https://github.com/cpage-pivotal/where-for-dinner
+#      ref:
+#        branch: main
+#    subPath: where-for-dinner-search-proc
+#---
+#apiVersion: carto.run/v1alpha1
+#kind: Workload
+#metadata:
+#  name: where-for-dinner-notify
+#  namespace: where-for-dinner
+#  labels:
+#    apps.tanzu.vmware.com/workload-type: web
+#    app.kubernetes.io/part-of: where-for-dinner-notify
+#    networking.knative.dev/visibility: cluster-local
+#    apps.tanzu.vmware.com/auto-configure-actuators: "true"
+#    apps.tanzu.vmware.com/has-tests: "true"
+#    apps.tanzu.vmware.com/carvel-package-workflow: "true"
+#spec:
+#  env:
+#    - name: spring_profiles_active
+#      value: rabbitmq
+#  build:
+#    env:
+#      - name: BP_JVM_VERSION
+#        value: "17"
+#      - name: BP_MAVEN_ACTIVE_PROFILES
+#        value: streams
+#  params:
+#    - name: annotations
+#      value:
+#        autoscaling.knative.dev/minScale: "1"
+#        autoscaling.knative.dev/target: "200"
+#        autoscaling.knative.dev/maxScale: "4"
+#  serviceClaims:
+#    - name: rmq
+#      ref:
+#        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+#        kind: ClassClaim
+#        name: msgbroker-where-for-dinner
+#  resources:
+#    requests:
+#      memory: 500M
+#      cpu: 100m
+#    limits:
+#      memory: 750M
+#      cpu: 1500m
+#  source:
+#    git:
+#      url: https://github.com/cpage-pivotal/where-for-dinner
+#      ref:
+#        branch: main
+#    subPath: where-for-dinner-notify
+---
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: where-for-dinner-availability
+  namespace: where-for-dinner
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    app.kubernetes.io/part-of: where-for-dinner-availability
+    networking.knative.dev/visibility: cluster-local
+    apps.tanzu.vmware.com/auto-configure-actuators: "true"
+    apps.tanzu.vmware.com/has-tests: "true"
+    apis.apps.tanzu.vmware.com/register-api: "true"
+    apps.tanzu.vmware.com/carvel-package-workflow: "true"
+spec:
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "17"
+      - name: BP_MAVEN_ACTIVE_PROFILES
+        value: streams
+  env:
+    - name: spring_profiles_active
+      value: rabbitmq
+  params:
+    - name: annotations
+      value:
+        autoscaling.knative.dev/minScale: "1"
+        autoscaling.knative.dev/target: "200"
+        autoscaling.knative.dev/maxScale: "4"
+    - name: api_descriptor
+      value:
+        type: openapi
+        location:
+          path: /v3/api-docs
+        system: where-for-dinner
+        owner: where-for-dinner-team
+        description: Core Where For Dinner service for retrieving dining availability
+  serviceClaims:
+    - name: rmq
+      ref:
+        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+        kind: ClassClaim
+        name: msgbroker-where-for-dinner
+  resources:
+    requests:
+      memory: 500M
+      cpu: 100m
+    limits:
+      memory: 750M
+      cpu: "1.5"
+  source:
+    git:
+      url: https://github.com/cpage-pivotal/where-for-dinner
+      ref:
+        branch: main
+    subPath: where-for-dinner-availability
+#---
+#apiVersion: carto.run/v1alpha1
+#kind: Workload
+#metadata:
+#  name: where-for-dinner-ui
+#  namespace: where-for-dinner
+#  labels:
+#    apps.tanzu.vmware.com/workload-type: web
+#    app.kubernetes.io/part-of: where-for-dinner-ui
+#    networking.knative.dev/visibility: cluster-local
+#    apps.tanzu.vmware.com/has-tests: "true"
+#    apps.tanzu.vmware.com/carvel-package-workflow: "true"
+#spec:
+#  build:
+#    env:
+#      - name: BP_NODE_RUN_SCRIPTS
+#        value: build
+#      - name: BP_WEB_SERVER_ROOT
+#        value: dist
+#  env:
+#    - name: REACT_APP_PROFILE
+#      value: nonsecure
+#  params:
+#    - name: annotations
+#      value:
+#        autoscaling.knative.dev/minScale: "1"
+#        autoscaling.knative.dev/target: "200"
+#        autoscaling.knative.dev/maxScale: "4"
+#  resources:
+#    requests:
+#      memory: 500M
+#      cpu: 100m
+#    limits:
+#      memory: 750M
+#      cpu: 1500m
+#  source:
+#    git:
+#      url: https://github.com/cpage-pivotal/where-for-dinner
+#      ref:
+#        branch: main
+#    subPath: where-for-dinner-ui
+#---
+#apiVersion: carto.run/v1alpha1
+#kind: Workload
+#metadata:
+#  name: where-for-dinner-crawler
+#  namespace: where-for-dinner
+#  labels:
+#    apps.tanzu.vmware.com/workload-type: server
+#    app.kubernetes.io/part-of: where-for-dinner-crawler
+#    apps.tanzu.vmware.com/auto-configure-actuators: "true"
+#    apps.tanzu.vmware.com/has-tests: "true"
+#    apps.tanzu.vmware.com/carvel-package-workflow: "true"
+#spec:
+#  build:
+#    env:
+#      - name: BP_JVM_VERSION
+#        value: "17"
+#      - name: BP_MAVEN_ACTIVE_PROFILES
+#        value: streams
+#  env: null
+#  params:
+#    - name: ports
+#      value:
+#        - port: 80
+#          containerPort: 8080
+#          name: http
+#  resources:
+#    requests:
+#      memory: 500M
+#      cpu: 100m
+#    limits:
+#      memory: 750M
+#      cpu: 1500m
+#  source:
+#    git:
+#      url: https://github.com/cpage-pivotal/where-for-dinner
+#      ref:
+#        branch: main
+#    subPath: where-for-dinner-crawler
