@@ -97,7 +97,7 @@ tap_install:
             - type: url
               target: https://github.com/tanzumldemos/backstage-ml-panel/blob/main/yaml/static/tools.yaml
             - type: url
-              target: https://github.com/vmware-tanzu/application-accelerator-samples/where-for-dinner/blob/main/catalog/catalog-info.yaml
+              target: https://github.com/cpage-pivotal/where-for-dinner/blob/main/catalog/catalog-info.yaml
         kubernetes:
           serviceLocatorMethod:
             type: 'multiTenant'
