@@ -101,6 +101,13 @@ tap_install:
         kubernetes:
           serviceLocatorMethod:
             type: 'multiTenant'
+        backend:
+          baseUrl: http://tap-gui.tap.tanzu.corby.page
+          cors:
+            origin: http://tap-gui.tap.tanzu.corby.page
+          reading:
+            allow:
+              - host: 'where-for-dinner-where-for-dinner.iterate.tanzu.corby.page'
         mlbackstage:
           clusterName: local
           imageRepoBaseUrl: https://github.com/tanzumldemos/backstage-ml-panel/blob/main/images
