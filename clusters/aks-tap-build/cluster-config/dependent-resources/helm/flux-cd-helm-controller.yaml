@@ -9,4 +9,4 @@ spec:
   packageRef:
     refName: fluxcd-helm-controller.tanzu.vmware.com
     versionSelection:
-      constraints: v0.28.1_vmware.1-tkg.1
+      constraints: 0.28.1+vmware.1-tkg.1
