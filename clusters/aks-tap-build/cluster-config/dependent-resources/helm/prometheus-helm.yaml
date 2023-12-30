@@ -927,20 +927,20 @@ spec:
                         labelsFromPath:
                           namespaces_deployed_to:
                             [status, deploy, kapp, associatedResources, namespaces]
-#---
-#apiVersion: projectcontour.io/v1
-#kind: HTTPProxy
-#metadata:
-#  name: prometheus
-#  namespace: prometheus
-#spec:
-#  virtualhost:
-#    fqdn: prometheus.tap.tanzu.corby.page
-#    tls:
-#      secretName: contour-tls/tls
-#  routes:
-#    - conditions:
-#        - prefix: /
-#      services:
-#        - name: argo-workflows-server
-#          port: 2746
+---
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: prometheus
+  namespace: prometheus
+spec:
+  virtualhost:
+    fqdn: prometheus.tap.tanzu.corby.page
+    tls:
+      secretName: contour-tls/tls
+  routes:
+    - conditions:
+        - prefix: /
+      services:
+        - name: prometheus-kube-prometheus-prometheus
+          port: 9090
