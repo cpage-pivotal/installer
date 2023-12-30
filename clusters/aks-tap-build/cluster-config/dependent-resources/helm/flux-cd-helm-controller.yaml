@@ -1,0 +1,12 @@
+---
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: flux-helm-controller
+  namespace: tap-install
+spec:
+  serviceAccountName: tap-installer-sa
+  packageRef:
+    refName: fluxcd-helm-controller.tanzu.vmware.com
+    versionSelection:
+      constraints: 0.28.1+vmware.1-tkg.2
