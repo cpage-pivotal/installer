@@ -60,4 +60,4 @@ spec:
         - prefix: /
       services:
         - name: grafana
-          port: 88
+          port: 80
