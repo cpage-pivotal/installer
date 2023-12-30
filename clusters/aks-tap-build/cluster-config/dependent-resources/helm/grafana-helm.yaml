@@ -1,46 +1,49 @@
-#---
-#apiVersion: source.toolkit.fluxcd.io/v1beta2
-#kind: HelmRepository
-#metadata:
-#  name: grafana
-#  namespace: tap-install
-#  annotations:
-#    kapp.k14s.io/change-group: grafana-helm-repo
-#spec:
-#  interval: 5m0s
-#  url: https://grafana.github.io/helm-charts
-#---
-#apiVersion: v1
-#kind: Namespace
-#metadata:
-#  name: grafana
-#---
-#apiVersion: helm.toolkit.fluxcd.io/v2beta1
-#kind: HelmRelease
-#metadata:
-#  name: grafana
-#  namespace: grafana
-#spec:
-#  chart:
-#    spec:
-#      chart: grafana
-#      sourceRef:
-#        kind: HelmRepository
-#        name: grafana
-#        namespace: tap-install
-#      version: "7.0.19"
-#  interval: 1m0s
-#  values:
-#    # See https://raw.githubusercontent.com/grafana/helm-charts/main/charts/grafana/values.yaml
-#    datasources:
-#      datasources.yaml:
-#        apiVersion: 1
-#        datasources.yaml:
-#          - name: prometheus
-#            type: prometheus
-#            url: http://prometheus-server.prometheus.svc.cluster.local
-#            access: proxy
-#            isDefault: true
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: grafana
+  namespace: tap-install
+  annotations:
+    kapp.k14s.io/change-group: grafana-helm-repo
+spec:
+  interval: 5m0s
+  url: https://grafana.github.io/helm-charts
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: grafana
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: grafana
+spec:
+  chart:
+    spec:
+      chart: grafana
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+        namespace: tap-install
+      version: "7.0.19"
+  interval: 1m0s
+  values:
+    # See https://raw.githubusercontent.com/grafana/helm-charts/main/charts/grafana/values.yaml
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources.yaml:
+          - name: prometheus
+            type: prometheus
+            url: http://prometheus-server.prometheus.svc.cluster.local
+            access: proxy
+            isDefault: true
+    persistence:
+      enabled: true
+    adminPassword: grafanaadmin
 #---
 #apiVersion: projectcontour.io/v1
 #kind: HTTPProxy
