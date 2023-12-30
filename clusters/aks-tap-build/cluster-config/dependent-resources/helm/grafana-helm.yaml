@@ -38,7 +38,7 @@ spec:
         datasources.yaml:
           - name: prometheus
             type: prometheus
-            url: http://prometheus-server.prometheus.svc.cluster.local
+            url: http://prometheus-grafana.prometheus.svc.cluster.local
             access: proxy
             isDefault: true
     persistence:
