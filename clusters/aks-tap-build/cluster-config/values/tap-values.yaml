@@ -108,6 +108,10 @@ tap_install:
           reading:
             allow:
               - host: 'where-for-dinner-where-for-dinner.iterate.tanzu.corby.page'
+        grafana:
+          domain: https://grafana.tap.tanzu.corby.page
+          # See: https://grafana.com/blog/2021/06/14/the-new-unified-alerting-system-for-grafana-everything-you-need-to-know/
+          unifiedAlerting: true
         mlbackstage:
           clusterName: local
           imageRepoBaseUrl: https://github.com/tanzumldemos/backstage-ml-panel/blob/main/images
