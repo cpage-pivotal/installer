@@ -35,7 +35,7 @@ spec:
     datasources:
       datasources.yaml:
         apiVersion: 1
-        datasources.yaml:
+        datasources:
           - name: prometheus
             type: prometheus
             url: http://prometheus-kube-prometheus-prometheus.prometheus.svc.cluster.local:9090
