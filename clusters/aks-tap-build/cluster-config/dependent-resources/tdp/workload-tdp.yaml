@@ -18,9 +18,6 @@ spec:
               version: '0.2.0'
             - name: '@vrabbi/chatgpt-wrapper'
               version: '0.2.1'
-            - name: '@vmware-tanzu/tdp-plugin-backstage-grafana'
-              version: '0.0.2'
-
         backend:
           plugins:
             - name: '@cepage/plugin-tech-insights-wrapper-backend'
