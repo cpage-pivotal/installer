@@ -88,8 +88,8 @@ tap_install:
             - host: github.com
         catalog:
           locations:
-            - type: url
-              target: https://github.com/cpage-pivotal/spring-sensors/blob/main/catalog/catalog-info.yaml
+#            - type: url
+#              target: https://github.com/cpage-pivotal/spring-sensors/blob/main/catalog/catalog-info.yaml
             - type: url
               target: https://github.com/cpage-pivotal/tanzu-java-web-app/blob/main/catalog-info.yaml
             - type: url
