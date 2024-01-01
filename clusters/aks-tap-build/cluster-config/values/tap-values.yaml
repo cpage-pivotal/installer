@@ -109,15 +109,15 @@ tap_install:
             allow:
               - host: 'where-for-dinner-where-for-dinner.iterate.tanzu.corby.page'
         proxy:
-          /grafana/api:
+          '/grafana/api':
             # May be a public or an internal DNS
             target: https://grafana.tap.tanzu.corby.page/
             headers: null
-            Authorization: "Bearer glsa_25OWLXJYBKRFV2JEMlsjnvapc4gLzxGv_5f37ae3e"
+            Authorization: Bearer glsa_25OWLXJYBKRFV2JEMlsjnvapc4gLzxGv_5f37ae3e
         grafana:
           domain: https://grafana.tap.tanzu.corby.page
           # See: https://grafana.com/blog/2021/06/14/the-new-unified-alerting-system-for-grafana-everything-you-need-to-know/
-          unifiedAlerting: true
+          unifiedAlerting: false
         mlbackstage:
           clusterName: local
           imageRepoBaseUrl: https://github.com/tanzumldemos/backstage-ml-panel/blob/main/images
