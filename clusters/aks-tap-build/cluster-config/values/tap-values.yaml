@@ -90,9 +90,9 @@ tap_install:
           serviceLocatorMethod:
             type: 'multiTenant'
         backend:
-          baseUrl: http://tap-gui.tap.tanzu.corby.page
+          baseUrl: https://tap-gui.tap.tanzu.corby.page
           cors:
-            origin: http://tap-gui.tap.tanzu.corby.page
+            origin: https://tap-gui.tap.tanzu.corby.page
           reading:
             allow:
               - host: 'where-for-dinner-where-for-dinner.iterate.tanzu.corby.page'
