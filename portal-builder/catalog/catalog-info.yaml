@@ -7,6 +7,9 @@ metadata:
     - platform
     - observability
     - grafana
+  links:
+    - url: https://grafana.tap.tanzu.corby.page
+      title: "Grafana (Username: tap / Password: healthwatch)"
   annotations:
     'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=healthwatch'
     'grafana/dashboard-selector': 'general'
