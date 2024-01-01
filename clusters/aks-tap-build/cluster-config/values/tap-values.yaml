@@ -81,7 +81,7 @@ tap_install:
         secretName: tls
       app_config:
         auth:
-          allowGuestAccess: false
+          allowGuestAccess: true
           environment: development
         integrations:
           github:
