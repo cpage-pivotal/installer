@@ -109,7 +109,7 @@ tap_install:
             allow:
               - host: 'where-for-dinner-where-for-dinner.iterate.tanzu.corby.page'
         proxy:
-          /grafana/api:
+          /grafana:
             # May be a public or an internal DNS
             target: https://grafana.tap.tanzu.corby.page/
             headers: null
