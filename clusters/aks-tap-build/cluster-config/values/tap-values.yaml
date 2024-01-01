@@ -93,7 +93,7 @@ tap_install:
             - type: url
               target: https://github.com/cpage-pivotal/tanzu-java-web-app/blob/main/catalog-info.yaml
             - type: url
-              target: https://github.com/cpage-pivotal/dallecool/blob/main/catalog/catalog-info.yaml
+              target: https://github.com/cpage-pivotal/installer/tree/main/portal-builder/catalog/catalog-info.yaml
             - type: url
               target: https://github.com/tanzumldemos/backstage-ml-panel/blob/main/yaml/static/tools.yaml
             - type: url
@@ -111,7 +111,7 @@ tap_install:
         grafana:
           domain: https://grafana.tap.tanzu.corby.page
           # See: https://grafana.com/blog/2021/06/14/the-new-unified-alerting-system-for-grafana-everything-you-need-to-know/
-          unifiedAlerting: false
+          unifiedAlerting: true
         mlbackstage:
           clusterName: local
           imageRepoBaseUrl: https://github.com/tanzumldemos/backstage-ml-panel/blob/main/images

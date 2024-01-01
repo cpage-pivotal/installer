@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: healthwatch
+  description: Tanzu Application Platform Healthwatch
+  tags:
+    - platform
+    - observability
+    - grafana
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=healthwatch'
+    'grafana/dashboard-selector': 'general'
+    'grafana/alert-label-selector': 'type=http-requests'
+spec:
+  type: service
+  lifecycle: experimental
+  owner: default-team
