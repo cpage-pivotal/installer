@@ -14,12 +14,12 @@ spec:
           plugins:
             - name: '@cepage/plugin-tech-insights-wrapper'
               version: '1.1.0'
+            - name: '@vmware-tanzu/tdp-plugin-backstage-grafana'
+              version: '0.0.2'        
             - name: '@vrabbi/azure-devops-wrapper'
               version: '0.1.1'
             - name: '@vrabbi/chatgpt-wrapper'
-              version: '0.2.1'
-            - name: '@vrabbi/grafana-wrapper'
-              version: '0.1.0'
+              version: '0.2.1'        
         backend:
           plugins:
             - name: '@cepage/plugin-tech-insights-wrapper-backend'

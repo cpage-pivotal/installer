@@ -44,9 +44,7 @@ tap_install:
                         headers:
                             Authorization: ENC[AES256_GCM,data:UcZiAKEu+1wutmtu53440I/8HO42LEx6kkC9tJi9N902lMkram1JxmOazdAk/xSDrCAOPrk=,iv:jRS3x02A6kcM1yjRTMB6CN2DFnOcy/L03h53zZWj/bs=,tag:HMQb9hYx+mmed+7oblWOTw==,type:str]
                 azureDevOps:
-                    host: ENC[AES256_GCM,data:wPL97vV9Hz5sIKQwsw==,iv:/B3zdXAPPazH4tqg5P4WWDkWc945CBIl5zlFH85ULUw=,tag:1pTWoofDUI3WCHCJIoYO+w==,type:str]
                     token: ENC[AES256_GCM,data:PMtLi35HhFSB+SlfEDOgrgH/9GFUThkHLIieKJ5PsxAv5s10bquW4PQvaq+WkVfzgpp6uQ==,iv:fA9bquH0J3Dqbj6yLRy09+Haq3ebIk6YnaCT8pMsPro=,tag:sF5qMZlidzFgik799qGaoA==,type:str]
-                    organization: ENC[AES256_GCM,data:nPq5F78Qyg==,iv:glc8jACMufRNLCTKCzt8yfkSTNEJUeNUN0k7nCOsN+g=,tag:BMcR0hjrnp2JSFbaXVmFCA==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -62,8 +60,8 @@ sops:
             T3B6UHBiV1FqZTBkVDhwVUhCYVQrcVEK2kAoMT6fvCerZ/fLHP/S02lBCg57b0aG
             iTHTQ0qLNbAawrGglG1bICZ8lKgMQtKIPcM+5vZahUNL5VKBRhb39A==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-01-17T16:42:36Z"
-    mac: ENC[AES256_GCM,data:nmn6Dye8miTzJzmx8Mtn83mYQ0wAkmfe712iNyNXb1eoW/pbg1GYcf4dqYYp4ZFrWR7N3oCqBEWlMwSgTY6uCWL8AuF3mxawdrpSjZkJA871xNBlEGNnwUL03ijI4QqhvtLFN2FCQZ0vQjMvIlvobexoDyeTsCFmqMRFjSMv6Dw=,iv:21HbRtoGimj5RFibYw3v6teRNHwFr0qD1WyxNfy8IRM=,tag:+3FvGFacObgT9gVUw7GP6A==,type:str]
+    lastmodified: "2024-01-17T20:00:52Z"
+    mac: ENC[AES256_GCM,data:1zO/zls12jU0TL9VKPk2RgaPodQkMVDnufmPdPI8dhj9z8Zp+1BfV+YtZTVfMZhETbFD6oNwGJZFhJ/TrestDGq9K0CT604EMBbGOBhAgohT5AdVxhV2IM6NXeDHEeey+Y9Kr1KtqFQvY6mgTP4om/2OoKzpb9YXvXvt97qMBgY=,iv:1LqFSWmWOEw17O8iI7zhi6MVlLKr68ltta3hU+HErsc=,tag:MFI7OTAVHZQQdMPb/wp18A==,type:str]
     pgp: []
     unencrypted_suffix: _unencrypted
     version: 3.8.1
