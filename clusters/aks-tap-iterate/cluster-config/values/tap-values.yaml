@@ -18,7 +18,7 @@ tap_install:
       connector:
         deployment:
           enabled: true
-          replicas: 1
+          replicas: 2
       backend:
         ingressEnabled: true
         host: appliveview.tap.tanzu.corby.page
