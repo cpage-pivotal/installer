@@ -15,6 +15,10 @@ tap_install:
       kp_default_repository: "gcr.io/fe-cpage/build"
 
     appliveview_connector:
+      connector:
+        deployment:
+          enabled: true
+          replicas: 1
       backend:
         ingressEnabled: true
         host: appliveview.tap.tanzu.corby.page
