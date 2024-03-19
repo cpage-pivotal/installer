@@ -13,7 +13,9 @@ tap_install:
 
     buildservice:
       kp_default_repository: "gcr.io/fe-cpage/build"
-
+      dependency_updates:
+        allow: true
+        scope: all
     accelerator:
       ingress:
         include: true
