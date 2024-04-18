@@ -1,7 +1,7 @@
 apiVersion: carto.run/v1alpha1
 kind: Workload
 metadata:
-  name: openai
+  name: openai-web
   namespace: workload-openai
   labels:
     apps.tanzu.vmware.com/workload-type: web
